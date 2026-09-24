@@ -1,0 +1,1910 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>KumYu Advisory Group — Corporate, Medical & Safety Consulting</title>
+  <meta name="description" content="KumYu Advisory Group — corporate training, medical & safety consulting, marketing and packaging services, plus a built-in knowledge base and free financial calculators." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'sans-serif'],
+            display: ['"Plus Jakarta Sans"', 'Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50:  '#eef4ff', 100: '#e2ecff', 200: '#c7d6ff', 300: '#a3b8ff',
+              400: '#7891ff', 500: '#536dff', 600: '#3d4ef0', 700: '#2f3cc8',
+              800: '#28339c', 900: '#212b78',
+            },
+            mint: {
+              50:  '#effbf5', 100: '#d8f5e6', 200: '#b1ebcd', 300: '#7ddbac',
+              400: '#46c48b', 500: '#22a96e', 600: '#168857', 700: '#126a47',
+            },
+            ink: { 900: '#0a0f1f', 800: '#11172d', 700: '#1c2444' }
+          },
+          boxShadow: {
+            soft:   '0 1px 2px rgba(15,23,42,.04), 0 10px 30px rgba(15,23,42,.06)',
+            ring:   '0 0 0 1px rgba(15,23,42,.06)',
+            glow:   '0 10px 40px -10px rgba(83,109,255,.45)',
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --grad-mesh:
+        radial-gradient(1100px 500px at 8% -8%, rgba(83,109,255,.18), transparent 60%),
+        radial-gradient(900px 420px at 100% 0%, rgba(34,169,110,.14), transparent 60%),
+        radial-gradient(700px 360px at 50% 30%, rgba(120,145,255,.10), transparent 60%);
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', ui-sans-serif, system-ui, sans-serif; }
+    .container-px { padding-left: 1rem; padding-right: 1rem; }
+    @media (min-width: 768px) { .container-px { padding-left: 2rem; padding-right: 2rem; } }
+
+    h1, h2, h3, h4, .display { font-family: 'Plus Jakarta Sans', 'Inter', ui-sans-serif, system-ui, sans-serif; letter-spacing: -0.02em; }
+
+    /* Cards */
+    .card { transition: transform .3s cubic-bezier(.2,.7,.2,1), box-shadow .3s ease, border-color .3s ease, background .3s ease; }
+    .card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px -10px rgba(15,23,42,.10); border-color: rgb(199 214 255 / .8); }
+
+    /* Tabs */
+    .tab-btn { transition: all .2s ease; }
+    .tab-btn.active { background: rgb(61 78 240); color: #fff; box-shadow: 0 8px 22px -6px rgba(61,78,240,.45); }
+
+    /* Accordion */
+    .acc-item summary::-webkit-details-marker { display: none; }
+    .acc-item summary { list-style: none; }
+    .acc-item[open] .acc-chevron { transform: rotate(180deg); }
+    .acc-chevron { transition: transform .2s ease; }
+    .acc-item[open] .acc-summary { background: rgb(238 244 255); }
+
+    /* Toast */
+    .toast {
+      position: fixed; left: 50%; bottom: 28px; transform: translateX(-50%) translateY(20px);
+      background: #0a0f1f; color: #fff; padding: 12px 18px; border-radius: 12px;
+      box-shadow: 0 12px 32px rgba(0,0,0,.25); opacity: 0; pointer-events: none;
+      transition: all .25s ease; z-index: 60; display: flex; align-items: center; gap: 10px;
+    }
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+    input[type=number]::-webkit-outer-spin-button,
+    input[type=number]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+    input[type=number] { -moz-appearance: textfield; }
+
+    /* Hero mesh background */
+    .hero-bg { background: var(--grad-mesh), linear-gradient(180deg, #f6f8ff 0%, #ffffff 80%); position: relative; overflow: hidden; }
+    .hero-bg::after {
+      content: ""; position: absolute; inset: auto 0 -1px 0; height: 80px;
+      background: linear-gradient(180deg, transparent, white);
+      pointer-events: none;
+    }
+
+    /* Glassy nav */
+    .glass { background: rgba(255,255,255,.72); backdrop-filter: saturate(150%) blur(14px); -webkit-backdrop-filter: saturate(150%) blur(14px); }
+
+    /* Inputs */
+    .calc-input {
+      width: 100%; padding: 11px 13px; border: 1px solid rgb(226 232 240);
+      border-radius: 12px; background: #fff; outline: none; font-size: .95rem;
+      transition: border-color .15s ease, box-shadow .15s ease, background .15s ease;
+    }
+    .calc-input:focus { border-color: rgb(83 109 255); box-shadow: 0 0 0 4px rgba(83,109,255,.15); }
+    .calc-label { font-size: .8rem; font-weight: 600; color: rgb(71 85 105); margin-bottom: 6px; display: block; }
+
+    /* Result tiles */
+    .result-tile {
+      background: linear-gradient(180deg, #f5f8ff 0%, #e9efff 100%);
+      border: 1px solid rgb(219 231 255);
+      border-radius: 14px; padding: 14px 16px;
+      transition: transform .2s ease;
+    }
+    .result-tile:hover { transform: translateY(-1px); }
+    .result-tile .v { font-size: 1.35rem; font-weight: 700; color: rgb(33 43 120); }
+    .result-tile .l { font-size: .8rem; color: rgb(71 85 105); font-weight: 500; }
+
+    section { scroll-margin-top: 80px; }
+
+    /* Decorative dotted pattern for sub-bgs */
+    .dot-grid {
+      background-image: radial-gradient(rgba(15,23,42,.06) 1px, transparent 1px);
+      background-size: 18px 18px;
+    }
+
+    /* Pill chip with subtle inner shadow */
+    .chip { box-shadow: inset 0 0 0 1px rgba(15,23,42,.05); }
+
+    /* Animated gradient text for the brand accent */
+    .grad-text {
+      background: linear-gradient(90deg, #3d4ef0 0%, #22a96e 100%);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+
+    /* Admin table polish */
+    .admin-table th { font-size: .72rem; text-transform: uppercase; letter-spacing: .06em; color: rgb(100 116 139); font-weight: 700; }
+    .admin-table tbody tr { transition: background .15s ease; }
+    .admin-table tbody tr:hover { background: rgb(248 250 255); }
+  </style>
+</head>
+<body class="bg-white text-slate-800 antialiased">
+
+  <!-- ============== HEADER / NAV ============== -->
+  <header id="nav" class="sticky top-0 z-50 glass border-b border-slate-200/70">
+    <div class="max-w-7xl mx-auto container-px">
+      <div class="flex items-center justify-between h-16">
+        <a href="#top" class="flex items-center gap-2.5">
+          <div class="relative w-9 h-9 rounded-xl bg-gradient-to-br from-brand-500 to-mint-500 grid place-items-center text-white shadow-glow">
+            <i class="fa-solid fa-compass"></i>
+          </div>
+          <div class="leading-tight">
+            <div class="font-extrabold text-ink-900 text-[17px] tracking-tight">KumYu</div>
+            <div class="text-[11px] text-slate-500 -mt-0.5">Advisory Group</div>
+          </div>
+        </a>
+
+        <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-slate-700">
+          <a href="#services" class="hover:text-brand-700 transition">Services</a>
+          <a href="#faq" class="hover:text-brand-700 transition">Knowledge Base</a>
+          <a href="#contact" class="hover:text-brand-700 transition">Contact</a>
+          <a href="#admin" data-admin-link class="hover:text-brand-700 transition hidden">Admin</a>
+        </nav>
+
+        <div class="hidden md:flex items-center gap-3">
+          <a href="#admin" data-admin-link class="hidden text-sm font-semibold text-slate-700 hover:text-brand-700 inline-flex items-center gap-1.5">
+            <i class="fa-solid fa-shield-halved text-xs"></i> Admin
+          </a>
+          <a href="#contact" class="inline-flex items-center gap-2 bg-brand-600 hover:bg-brand-700 text-white text-sm font-semibold px-4 py-2.5 rounded-xl shadow-glow transition">
+            <i class="fa-solid fa-envelope-open-text"></i> Contact Us
+          </a>
+        </div>
+
+        <button id="menuBtn" class="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-lg border border-slate-200 text-slate-700" aria-label="Open menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+
+      <div id="mobileMenu" class="md:hidden hidden pb-4">
+        <div class="flex flex-col gap-1 pt-2">
+          <a href="#services" class="px-3 py-2.5 rounded-lg hover:bg-slate-100 text-slate-700">Services</a>
+          <a href="#faq" class="px-3 py-2.5 rounded-lg hover:bg-slate-100 text-slate-700">Knowledge Base</a>
+          <a href="#contact" class="px-3 py-2.5 rounded-lg hover:bg-slate-100 text-slate-700">Contact</a>
+          <a href="#tools" class="px-3 py-2.5 rounded-lg hover:bg-slate-100 text-slate-700">Free Tools &amp; Utilities</a>
+          <a href="#admin" data-admin-link class="hidden px-3 py-2.5 rounded-lg hover:bg-slate-100 text-slate-700">Admin (Lead CRM)</a>
+          <a href="#contact" class="mt-2 inline-flex items-center justify-center gap-2 bg-brand-600 text-white font-semibold px-4 py-2.5 rounded-xl">
+            <i class="fa-solid fa-envelope-open-text"></i> Contact Us
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ============== HERO ============== -->
+    <section class="hero-bg">
+      <div class="max-w-7xl mx-auto container-px py-16 md:py-24">
+        <div class="grid md:grid-cols-2 gap-10 items-center">
+          <div>
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/70 backdrop-blur text-brand-700 text-xs font-semibold border border-brand-100 chip">
+              <span class="w-1.5 h-1.5 rounded-full bg-mint-500"></span>
+              Trusted by 250+ SMEs across the region
+            </div>
+            <h1 class="mt-5 text-4xl md:text-5xl lg:text-6xl font-extrabold text-ink-900 leading-[1.04]">
+              Consulting that <span class="grad-text">moves the needle</span>.
+            </h1>
+            <p class="mt-5 text-slate-600 text-base md:text-lg max-w-xl">
+              KumYu Advisory helps your team operate with confidence — across corporate training, medical, safety, marketing and packaging — backed by data, structured playbooks and a 12-year track record.
+            </p>
+            <div class="mt-7 flex flex-wrap gap-3">
+              <a href="#services" class="inline-flex items-center gap-2 bg-brand-600 hover:bg-brand-700 text-white font-semibold px-5 py-3 rounded-xl shadow-glow transition">
+                Explore Services <i class="fa-solid fa-arrow-right text-sm"></i>
+              </a>
+              <a href="#contact" class="inline-flex items-center gap-2 bg-white/80 backdrop-blur border border-slate-200 hover:border-slate-300 text-slate-800 font-semibold px-5 py-3 rounded-xl shadow-soft transition">
+                <i class="fa-solid fa-comments"></i> Contact Us
+              </a>
+            </div>
+
+            <div class="mt-10 grid grid-cols-3 max-w-md gap-6 text-center md:text-left">
+              <div>
+                <div class="text-2xl font-extrabold text-ink-900">12+</div>
+                <div class="text-xs text-slate-500 mt-1">Years experience</div>
+              </div>
+              <div>
+                <div class="text-2xl font-extrabold text-ink-900">250+</div>
+                <div class="text-xs text-slate-500 mt-1">Clients served</div>
+              </div>
+              <div>
+                <div class="text-2xl font-extrabold text-ink-900">98%</div>
+                <div class="text-xs text-slate-500 mt-1">Retention rate</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="relative">
+            <div class="absolute -inset-6 bg-gradient-to-tr from-brand-200/60 via-mint-200/40 to-transparent rounded-[2rem] blur-3xl opacity-70"></div>
+            <div class="relative bg-white/85 backdrop-blur border border-slate-200/80 rounded-3xl shadow-soft p-6">
+              <div class="flex items-center justify-between">
+                <div>
+                  <div class="text-xs font-semibold text-slate-500 tracking-widest">KNOWLEDGE BASE</div>
+                  <div class="text-lg font-bold text-ink-900">Search articles &amp; the web</div>
+                </div>
+                <div class="w-10 h-10 grid place-items-center rounded-xl bg-brand-50 text-brand-700">
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+              </div>
+              <div class="mt-4 flex items-center gap-2 px-3 py-2.5 rounded-xl border border-slate-200 bg-slate-50 text-sm text-slate-500">
+                <i class="fa-solid fa-magnifying-glass text-slate-400"></i>
+                <span>Try: <code class="text-slate-700">"training"</code>, <code class="text-slate-700">"EPF"</code>, <code class="text-slate-700">"pricing"</code></span>
+              </div>
+              <div class="mt-4 flex flex-wrap gap-2 text-xs">
+                <span class="chip px-2.5 py-1 rounded-full bg-brand-50 text-brand-700">Compliance</span>
+                <span class="chip px-2.5 py-1 rounded-full bg-mint-50 text-mint-700">Marketing</span>
+                <span class="chip px-2.5 py-1 rounded-full bg-slate-100 text-slate-700">Packaging</span>
+                <span class="chip px-2.5 py-1 rounded-full bg-slate-100 text-slate-700">Safety</span>
+              </div>
+              <a href="#faq" class="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-brand-700 hover:text-brand-800">
+                Open the knowledge base <i class="fa-solid fa-arrow-right text-xs"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============== CORE SERVICES ============== -->
+    <section id="services" class="py-16 md:py-24 bg-white">
+      <div class="max-w-7xl mx-auto container-px">
+        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+          <div class="max-w-2xl">
+            <div class="text-xs font-semibold tracking-widest text-brand-600 uppercase">What we do</div>
+            <h2 class="mt-2 text-3xl md:text-4xl font-extrabold text-ink-900">Five focused services, end-to-end outcomes.</h2>
+            <p class="mt-3 text-slate-600">Each engagement is run by a senior lead and a small, accountable team. No hand-offs, no surprises.</p>
+          </div>
+          <a href="#contact" class="self-start md:self-end inline-flex items-center gap-2 text-sm font-semibold text-brand-700 hover:text-brand-800">
+            Talk to a consultant <i class="fa-solid fa-arrow-right text-xs"></i>
+          </a>
+        </div>
+
+        <div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+
+          <article class="card relative bg-white border border-slate-200 rounded-2xl p-6 shadow-soft overflow-hidden">
+            <div class="absolute -right-10 -top-10 w-32 h-32 rounded-full bg-brand-50/70 blur-2xl"></div>
+            <div class="relative flex items-start justify-between">
+              <div class="w-11 h-11 rounded-xl bg-brand-50 text-brand-700 grid place-items-center">
+                <i class="fa-solid fa-chalkboard-user"></i>
+              </div>
+              <span class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">01</span>
+            </div>
+            <h3 class="relative mt-4 text-lg font-bold text-ink-900">Corporate Training Services</h3>
+            <p class="relative mt-2 text-sm text-slate-600">Leadership, sales, compliance &amp; soft-skills programs with measurable pre/post KPIs.</p>
+            <ul class="relative mt-4 space-y-1.5 text-sm text-slate-600">
+              <li class="flex gap-2"><i class="fa-solid fa-check text-mint-600 mt-1 text-xs"></i> Custom curriculum design</li>
+              <li class="flex gap-2"><i class="fa-solid fa-check text-mint-600 mt-1 text-xs"></i> On-site &amp; virtual delivery</li>
+              <li class="flex gap-2"><i class="fa-solid fa-check text-mint-600 mt-1 text-xs"></i> ROI reporting</li>
+            </ul>
+            <a href="#contact" class="relative mt-5 inline-flex items-center gap-2 text-sm font-semibold text-brand-700 hover:text-brand-800">
+              Learn more <i class="fa-solid fa-arrow-right text-xs"></i>
+            </a>
+          </article>
+
+          <article class="card relative bg-white border border-slate-200 rounded-2xl p-6 shadow-soft overflow-hidden">
+            <div class="absolute -right-10 -top-10 w-32 h-32 rounded-full bg-mint-50 blur-2xl"></div>
+            <div class="relative flex items-start justify-between">
+              <div class="w-11 h-11 rounded-xl bg-mint-50 text-mint-700 grid place-items-center">
+                <i class="fa-solid fa-stethoscope"></i>
+              </div>
+              <span class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">02</span>
+            </div>
+            <h3 class="relative mt-4 text-lg font-bold text-ink-900">Medical-Related Consulting</h3>
+            <p class="relative mt-2 text-sm text-slate-600">Healthcare operations, clinic set-up advisory, regulatory readiness &amp; workflow audits.</p>
+            <ul class="relative mt-4 space-y-1.5 text-sm text-slate-600">
+              <li class="flex gap-2"><i class="fa-solid fa-check text-mint-600 mt-1 text-xs"></i> Licensing &amp; accreditation</li>
+              <li class="flex gap-2"><i class="fa-solid fa-check text-mint-600 mt-1 text-xs"></i> Process optimization</li>
+              <li class="flex gap-2"><i class="fa-solid fa-check text-mint-600 mt-1 text-xs"></i> Compliance reviews</li>
+            </ul>
+            <a href="#contact" class="relative mt-5 inline-flex items-center gap-2 text-sm font-semibold text-brand-700 hover:text-brand-800">
+              Learn more <i class="fa-solid fa-arrow-right text-xs"></i>
+            </a>
+          </article>
+
+          <article class="card relative bg-white border border-slate-200 rounded-2xl p-6 shadow-soft overflow-hidden">
+            <div class="absolute -right-10 -top-10 w-32 h-32 rounded-full bg-brand-50/70 blur-2xl"></div>
+            <div class="relative flex items-start justify-between">
+              <div class="w-11 h-11 rounded-xl bg-brand-50 text-brand-700 grid place-items-center">
+                <i class="fa-solid fa-helmet-safety"></i>
+              </div>
+              <span class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">03</span>
+            </div>
+            <h3 class="relative mt-4 text-lg font-bold text-ink-900">Safety Consulting</h3>
+            <p class="relative mt-2 text-sm text-slate-600">Workplace safety, risk assessments, OSH frameworks and incident-prevention programs.</p>
+            <ul class="relative mt-4 space-y-1.5 text-sm text-slate-600">
+              <li class="flex gap-2"><i class="fa-solid fa-check text-mint-600 mt-1 text-xs"></i> Risk assessments</li>
+              <li class="flex gap-2"><i class="fa-solid fa-check text-mint-600 mt-1 text-xs"></i> OSH policy drafting</li>
+              <li class="flex gap-2"><i class="fa-solid fa-check text-mint-600 mt-1 text-xs"></i> Audit &amp; remediation</li>
+            </ul>
+            <a href="#contact" class="relative mt-5 inline-flex items-center gap-2 text-sm font-semibold text-brand-700 hover:text-brand-800">
+              Learn more <i class="fa-solid fa-arrow-right text-xs"></i>
+            </a>
+          </article>
+
+          <article class="card relative bg-white border border-slate-200 rounded-2xl p-6 shadow-soft overflow-hidden">
+            <div class="absolute -right-10 -top-10 w-32 h-32 rounded-full bg-mint-50 blur-2xl"></div>
+            <div class="relative flex items-start justify-between">
+              <div class="w-11 h-11 rounded-xl bg-mint-50 text-mint-700 grid place-items-center">
+                <i class="fa-solid fa-bullhorn"></i>
+              </div>
+              <span class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">04</span>
+            </div>
+            <h3 class="relative mt-4 text-lg font-bold text-ink-900">Marketing Services</h3>
+            <p class="relative mt-2 text-sm text-slate-600">Brand strategy, performance marketing, content systems and analytics that move revenue.</p>
+            <ul class="relative mt-4 space-y-1.5 text-sm text-slate-600">
+              <li class="flex gap-2"><i class="fa-solid fa-check text-mint-600 mt-1 text-xs"></i> Brand &amp; messaging</li>
+              <li class="flex gap-2"><i class="fa-solid fa-check text-mint-600 mt-1 text-xs"></i> Paid acquisition</li>
+              <li class="flex gap-2"><i class="fa-solid fa-check text-mint-600 mt-1 text-xs"></i> Funnel analytics</li>
+            </ul>
+            <a href="#contact" class="relative mt-5 inline-flex items-center gap-2 text-sm font-semibold text-brand-700 hover:text-brand-800">
+              Learn more <i class="fa-solid fa-arrow-right text-xs"></i>
+            </a>
+          </article>
+
+          <article class="card relative bg-white border border-slate-200 rounded-2xl p-6 shadow-soft overflow-hidden">
+            <div class="absolute -right-10 -top-10 w-32 h-32 rounded-full bg-brand-50/70 blur-2xl"></div>
+            <div class="relative flex items-start justify-between">
+              <div class="w-11 h-11 rounded-xl bg-brand-50 text-brand-700 grid place-items-center">
+                <i class="fa-solid fa-box-open"></i>
+              </div>
+              <span class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">05</span>
+            </div>
+            <h3 class="relative mt-4 text-lg font-bold text-ink-900">Commercial Packaging Services</h3>
+            <p class="relative mt-2 text-sm text-slate-600">End-to-end packaging design, sourcing, and supply chain coordination for retail-ready goods.</p>
+            <ul class="relative mt-4 space-y-1.5 text-sm text-slate-600">
+              <li class="flex gap-2"><i class="fa-solid fa-check text-mint-600 mt-1 text-xs"></i> Structural &amp; graphic design</li>
+              <li class="flex gap-2"><i class="fa-solid fa-check text-mint-600 mt-1 text-xs"></i> Vendor sourcing</li>
+              <li class="flex gap-2"><i class="fa-solid fa-check text-mint-600 mt-1 text-xs"></i> QA &amp; logistics</li>
+            </ul>
+            <a href="#contact" class="relative mt-5 inline-flex items-center gap-2 text-sm font-semibold text-brand-700 hover:text-brand-800">
+              Learn more <i class="fa-solid fa-arrow-right text-xs"></i>
+            </a>
+          </article>
+
+          <div class="card relative bg-gradient-to-br from-ink-900 to-ink-700 text-white rounded-2xl p-6 shadow-soft overflow-hidden flex flex-col">
+            <div class="absolute -right-10 -bottom-10 w-40 h-40 rounded-full bg-brand-500/20 blur-3xl"></div>
+            <div class="relative w-11 h-11 rounded-xl bg-white/10 grid place-items-center">
+              <i class="fa-solid fa-comments"></i>
+            </div>
+            <h3 class="relative mt-4 text-lg font-bold">Not sure where to start?</h3>
+            <p class="relative mt-2 text-sm text-white/70">Book a 20-min discovery call. We'll suggest the smallest, highest-leverage next step.</p>
+            <a href="#contact" class="relative mt-5 inline-flex items-center gap-2 bg-white text-ink-900 font-semibold px-4 py-2.5 rounded-xl w-fit">
+              Book discovery call <i class="fa-solid fa-arrow-right text-xs"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============== KNOWLEDGE BASE / SEARCH ============== -->
+    <section id="faq" class="py-16 md:py-24 bg-slate-50 border-y border-slate-200 dot-grid">
+      <div class="max-w-5xl mx-auto container-px">
+
+        <!-- Hero search -->
+        <div class="text-center max-w-3xl mx-auto">
+          <div class="text-xs font-semibold tracking-widest text-brand-600 uppercase">Knowledge base</div>
+          <h2 class="mt-2 text-3xl md:text-4xl font-extrabold text-ink-900">Search anything related to your business.</h2>
+          <p class="mt-3 text-slate-600">A Google-style search across KumYu's articles, FAQs, and curated public resources — so you leave with answers, not just contacts.</p>
+        </div>
+
+        <!-- Big search bar -->
+        <div class="mt-8 max-w-3xl mx-auto">
+          <form id="kb-form" class="relative" onsubmit="return false">
+            <i class="fa-solid fa-magnifying-glass absolute left-5 top-1/2 -translate-y-1/2 text-slate-400 text-lg"></i>
+            <input id="kb-query" type="search" autocomplete="off" placeholder="Search KumYu articles, FAQs and the web… e.g. 'EPF rate', 'clinic licensing', 'OSHA audit'" class="w-full pl-14 pr-32 py-4 rounded-2xl border border-slate-200 bg-white shadow-soft focus:border-brand-500 focus:ring-4 focus:ring-brand-100 outline-none text-base" />
+            <kbd class="hidden md:inline-flex absolute right-4 top-1/2 -translate-y-1/2 items-center gap-1 px-2 py-1 rounded-md bg-slate-100 text-slate-500 text-xs font-semibold border border-slate-200">
+              <i class="fa-solid fa-keyboard text-[10px]"></i> ⌘ K
+            </kbd>
+          </form>
+
+          <!-- Suggested chips -->
+          <div class="mt-4 flex flex-wrap items-center gap-2 text-xs">
+            <span class="text-slate-500 mr-1">Try:</span>
+            <button class="kb-chip chip px-3 py-1.5 rounded-full bg-white border border-slate-200 hover:border-brand-300 hover:text-brand-700 text-slate-700 font-medium" data-q="OSHA Malaysia audit">OSHA Malaysia audit</button>
+            <button class="kb-chip chip px-3 py-1.5 rounded-full bg-white border border-slate-200 hover:border-brand-300 hover:text-brand-700 text-slate-700 font-medium" data-q="EPF contribution rate 2025">EPF rate 2025</button>
+            <button class="kb-chip chip px-3 py-1.5 rounded-full bg-white border border-slate-200 hover:border-brand-300 hover:text-brand-700 text-slate-700 font-medium" data-q="clinic licensing Malaysia">Clinic licensing</button>
+            <button class="kb-chip chip px-3 py-1.5 rounded-full bg-white border border-slate-200 hover:border-brand-300 hover:text-brand-700 text-slate-700 font-medium" data-q="ISO 45001">ISO 45001</button>
+            <button class="kb-chip chip px-3 py-1.5 rounded-full bg-white border border-slate-200 hover:border-brand-300 hover:text-brand-700 text-slate-700 font-medium" data-q="PCB tax Malaysia">PCB tax</button>
+            <button class="kb-chip chip px-3 py-1.5 rounded-full bg-white border border-slate-200 hover:border-brand-300 hover:text-brand-700 text-slate-700 font-medium" data-q="packaging sourcing China">Packaging sourcing</button>
+            <span class="mx-1 text-slate-300">|</span>
+            <button id="kb-web" type="button" class="chip px-3 py-1.5 rounded-full bg-ink-900 text-white hover:bg-ink-800 font-semibold inline-flex items-center gap-1.5">
+              <i class="fa-solid fa-globe text-[10px]"></i> Search the web
+            </button>
+          </div>
+        </div>
+
+        <!-- Filter tabs + result meta -->
+        <div class="mt-10 flex items-center justify-between flex-wrap gap-3">
+          <div id="kb-tabs" class="inline-flex p-1 bg-white border border-slate-200 rounded-xl shadow-soft text-sm font-semibold" role="tablist">
+            <button class="kb-tab px-3.5 py-1.5 rounded-lg" data-filter="all"        role="tab">All <span class="ml-1 text-slate-400" id="kb-c-all">0</span></button>
+            <button class="kb-tab px-3.5 py-1.5 rounded-lg" data-filter="articles"  role="tab">Articles <span class="ml-1 text-slate-400" id="kb-c-articles">0</span></button>
+            <button class="kb-tab px-3.5 py-1.5 rounded-lg" data-filter="faqs"      role="tab">FAQs <span class="ml-1 text-slate-400" id="kb-c-faqs">0</span></button>
+            <button class="kb-tab px-3.5 py-1.5 rounded-lg" data-filter="external"  role="tab">Web <span class="ml-1 text-slate-400" id="kb-c-external">0</span></button>
+          </div>
+          <div class="text-xs text-slate-500" id="kb-meta">Showing latest resources</div>
+        </div>
+
+        <!-- Results -->
+        <div id="kb-results" class="mt-5 space-y-3"></div>
+
+        <!-- Empty state -->
+        <div id="kb-empty" class="hidden mt-10 text-center bg-white border border-dashed border-slate-300 rounded-2xl p-10">
+          <div class="w-12 h-12 mx-auto rounded-full bg-slate-100 grid place-items-center text-slate-400"><i class="fa-solid fa-magnifying-glass"></i></div>
+          <p class="mt-3 font-semibold text-ink-900">No results yet</p>
+          <p class="mt-1 text-sm text-slate-600">Try keywords like <em>OSHA</em>, <em>EPF</em>, <em>clinic</em>, <em>ISO 45001</em>, <em>packaging</em>, or <em>marketing</em>.</p>
+          <div class="mt-4 flex flex-wrap justify-center gap-2">
+            <button class="kb-chip chip px-3 py-1.5 rounded-full bg-white border border-slate-200 text-slate-700 font-medium" data-q="OSH policy">OSH policy</button>
+            <button class="kb-chip chip px-3 py-1.5 rounded-full bg-white border border-slate-200 text-slate-700 font-medium" data-q="ISO 9001">ISO 9001</button>
+            <button class="kb-chip chip px-3 py-1.5 rounded-full bg-white border border-slate-200 text-slate-700 font-medium" data-q="EPF">EPF</button>
+            <button class="kb-chip chip px-3 py-1.5 rounded-full bg-white border border-slate-200 text-slate-700 font-medium" data-q="brand strategy">Brand strategy</button>
+          </div>
+        </div>
+
+        <!-- Browse-by-topic (default view) -->
+        <div id="kb-default" class="mt-8">
+          <div class="text-xs font-semibold tracking-widest text-brand-600 uppercase mb-4">Browse by topic</div>
+          <div id="kb-topics" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3"></div>
+        </div>
+
+        <!-- CTA strip -->
+        <div class="mt-12 relative overflow-hidden rounded-2xl bg-gradient-to-r from-ink-900 to-ink-700 p-6 md:p-8 text-white">
+          <div class="absolute -right-10 -top-10 w-48 h-48 rounded-full bg-brand-500/20 blur-3xl"></div>
+          <div class="relative flex items-center justify-between flex-wrap gap-4">
+            <div class="max-w-xl">
+              <h3 class="text-lg md:text-xl font-bold">Need a tailored answer?</h3>
+              <p class="mt-1 text-sm text-white/70">Our consultants reply within one business day. Tell us your situation and we'll point you to the right resources — or book a discovery call.</p>
+            </div>
+            <a href="#contact" class="inline-flex items-center gap-2 bg-white text-ink-900 font-semibold px-4 py-2.5 rounded-xl">
+              Ask a consultant <i class="fa-solid fa-arrow-right text-xs"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============== CONTACT / MINI CRM ============== -->
+    <section id="contact" class="py-16 md:py-24 bg-white">
+      <div class="max-w-7xl mx-auto container-px">
+        <div class="grid lg:grid-cols-5 gap-10">
+          <div class="lg:col-span-2">
+            <div class="text-xs font-semibold tracking-widest text-brand-600 uppercase">Get in touch</div>
+            <h2 class="mt-2 text-3xl md:text-4xl font-extrabold text-ink-900">Let's talk about your next move.</h2>
+            <p class="mt-3 text-slate-600">Drop your details and a short note. A senior consultant will respond within one business day. Submissions are stored in our client-side CRM for follow-up.</p>
+
+            <div class="mt-6 space-y-4 text-sm">
+              <div class="flex items-start gap-3">
+                <div class="w-9 h-9 rounded-lg bg-white border border-slate-200 text-brand-700 grid place-items-center"><i class="fa-solid fa-envelope"></i></div>
+                <div>
+                  <div class="font-semibold text-ink-900">Email</div>
+                  <div class="text-slate-600">hello@kumyu.example</div>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <div class="w-9 h-9 rounded-lg bg-white border border-slate-200 text-brand-700 grid place-items-center"><i class="fa-solid fa-phone"></i></div>
+                <div>
+                  <div class="font-semibold text-ink-900">Phone</div>
+                  <div class="text-slate-600">+60 3-1234 5678</div>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <div class="w-9 h-9 rounded-lg bg-white border border-slate-200 text-brand-700 grid place-items-center"><i class="fa-solid fa-location-dot"></i></div>
+                <div>
+                  <div class="font-semibold text-ink-900">Office</div>
+                  <div class="text-slate-600">Level 12, KumYu Tower, Kuala Lumpur</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-8 flex items-center gap-3 text-slate-500">
+              <a href="#" class="w-9 h-9 rounded-lg border border-slate-200 bg-white grid place-items-center hover:text-brand-700"><i class="fa-brands fa-linkedin-in"></i></a>
+              <a href="#" class="w-9 h-9 rounded-lg border border-slate-200 bg-white grid place-items-center hover:text-brand-700"><i class="fa-brands fa-x-twitter"></i></a>
+              <a href="#" class="w-9 h-9 rounded-lg border border-slate-200 bg-white grid place-items-center hover:text-brand-700"><i class="fa-brands fa-facebook-f"></i></a>
+              <a href="#" class="w-9 h-9 rounded-lg border border-slate-200 bg-white grid place-items-center hover:text-brand-700"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+          </div>
+
+          <div class="lg:col-span-3">
+            <form id="lead-form" class="relative bg-white border border-slate-200 rounded-3xl shadow-soft p-6 md:p-8 grid sm:grid-cols-2 gap-5 overflow-hidden" novalidate>
+              <div class="absolute -right-12 -top-12 w-40 h-40 rounded-full bg-brand-100/50 blur-3xl pointer-events-none"></div>
+              <div class="relative">
+                <label class="calc-label" for="lf-name">Full name *</label>
+                <input id="lf-name" name="name" type="text" class="calc-input" placeholder="Jane Doe" />
+                <p class="text-xs text-rose-600 mt-1 hidden" data-error="name">Please enter your name.</p>
+              </div>
+              <div class="relative">
+                <label class="calc-label" for="lf-email">Email *</label>
+                <input id="lf-email" name="email" type="email" class="calc-input" placeholder="jane@company.com" />
+                <p class="text-xs text-rose-600 mt-1 hidden" data-error="email">Please enter a valid email.</p>
+              </div>
+              <div class="relative">
+                <label class="calc-label" for="lf-phone">Phone number</label>
+                <input id="lf-phone" name="phone" type="tel" class="calc-input" placeholder="+60 12-345 6789" />
+              </div>
+              <div class="relative">
+                <label class="calc-label" for="lf-service">Service of interest *</label>
+                <select id="lf-service" name="service" class="calc-input">
+                  <option value="">Select a service…</option>
+                  <option>Corporate Training Services</option>
+                  <option>Medical-Related Consulting</option>
+                  <option>Safety Consulting</option>
+                  <option>Marketing Services</option>
+                  <option>Commercial Packaging Services</option>
+                  <option>Other / Not sure</option>
+                </select>
+                <p class="text-xs text-rose-600 mt-1 hidden" data-error="service">Please select a service.</p>
+              </div>
+              <div class="sm:col-span-2 relative">
+                <label class="calc-label" for="lf-message">Message *</label>
+                <textarea id="lf-message" name="message" rows="4" class="calc-input" placeholder="Tell us a little about what you're trying to achieve…"></textarea>
+                <p class="text-xs text-rose-600 mt-1 hidden" data-error="message">Please write a short message.</p>
+              </div>
+              <div class="sm:col-span-2 relative flex items-center justify-between flex-wrap gap-3">
+                <p class="text-xs text-slate-500">By submitting, you agree to our contacting you about your enquiry.</p>
+                <button type="submit" class="inline-flex items-center gap-2 bg-brand-600 hover:bg-brand-700 text-white font-semibold px-5 py-3 rounded-xl shadow-glow transition">
+                  <i class="fa-solid fa-paper-plane"></i> Submit enquiry
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============== FOOTER ============== -->
+  <footer class="bg-ink-900 text-white">
+    <div class="max-w-7xl mx-auto container-px py-14">
+      <div class="grid md:grid-cols-4 gap-10">
+        <div>
+          <div class="flex items-center gap-2.5">
+            <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-brand-500 to-mint-500 grid place-items-center text-white"><i class="fa-solid fa-compass"></i></div>
+            <div>
+              <div class="font-extrabold text-lg">KumYu</div>
+              <div class="text-[11px] text-white/60 -mt-0.5">Advisory Group</div>
+            </div>
+          </div>
+          <p class="mt-4 text-sm text-white/70">Corporate, medical, safety, marketing and packaging consulting — with a built-in knowledge base and free financial tools.</p>
+        </div>
+
+        <div>
+          <h4 class="font-bold">Company</h4>
+          <ul class="mt-4 space-y-2 text-sm text-white/70">
+            <li><a href="#services" class="hover:text-white">Services</a></li>
+            <li><a href="#faq" class="hover:text-white">Knowledge Base</a></li>
+            <li><a href="#contact" class="hover:text-white">Contact</a></li>
+            <li><a href="#admin" data-admin-link class="hidden hover:text-white">Admin / Lead CRM</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-bold">Contact</h4>
+          <ul class="mt-4 space-y-2 text-sm text-white/70">
+            <li><i class="fa-solid fa-envelope mr-2 text-white/50"></i> hello@kumyu.example</li>
+            <li><i class="fa-solid fa-phone mr-2 text-white/50"></i> +60 3-1234 5678</li>
+            <li><i class="fa-solid fa-location-dot mr-2 text-white/50"></i> Kuala Lumpur, Malaysia</li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-bold">Follow us</h4>
+          <div class="mt-4 flex items-center gap-2">
+            <a href="#" class="w-9 h-9 rounded-lg bg-white/10 grid place-items-center hover:bg-white/20"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="#" class="w-9 h-9 rounded-lg bg-white/10 grid place-items-center hover:bg-white/20"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="#" class="w-9 h-9 rounded-lg bg-white/10 grid place-items-center hover:bg-white/20"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" class="w-9 h-9 rounded-lg bg-white/10 grid place-items-center hover:bg-white/20"><i class="fa-brands fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-12 pt-8 border-t border-white/10">
+        <div class="flex items-center justify-between flex-wrap gap-4">
+          <div>
+            <div class="text-xs font-semibold tracking-widest text-white/60 uppercase">Additional services &amp; utilities</div>
+            <h5 class="mt-1 text-lg font-bold">Free Tools &amp; Utilities</h5>
+            <p class="text-sm text-white/60 mt-1 max-w-xl">Quick interactive calculators for EPF, PCB/tax, housing loans, car loans and custom loans. Open anytime — no sign-up.</p>
+          </div>
+          <a href="#tools" class="inline-flex items-center gap-2 bg-white text-ink-900 font-semibold px-4 py-2.5 rounded-xl hover:bg-slate-100">
+            <i class="fa-solid fa-calculator"></i> Open calculators
+          </a>
+        </div>
+      </div>
+
+      <div class="mt-10 pt-6 border-t border-white/10 flex items-center justify-between flex-wrap gap-3 text-sm text-white/60">
+        <div>© <span id="year"></span> KumYu Advisory Group. All rights reserved.</div>
+        <div class="flex gap-5">
+          <a href="#" class="hover:text-white">Privacy</a>
+          <a href="#" class="hover:text-white">Terms</a>
+          <a href="#" class="hover:text-white">Cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============== FREE TOOLS / CALCULATORS ============== -->
+  <section id="tools" class="py-16 md:py-20 bg-slate-50 border-t border-slate-200">
+    <div class="max-w-7xl mx-auto container-px">
+      <div class="max-w-2xl">
+        <div class="text-xs font-semibold tracking-widest text-brand-600 uppercase">Free tools &amp; utilities</div>
+        <h2 class="mt-2 text-3xl md:text-4xl font-extrabold text-ink-900">Quick financial calculators</h2>
+        <p class="mt-3 text-slate-600">Five lightweight tools — EPF, monthly tax, mortgage, car loan, and a customizable loan. Estimates only; verify with your advisor.</p>
+      </div>
+
+      <div class="mt-8 flex flex-wrap gap-2" role="tablist" aria-label="Financial calculators">
+        <button class="tab-btn active px-4 py-2.5 rounded-xl text-sm font-semibold border border-slate-200 bg-white text-slate-700" data-tab="epf" role="tab">
+          <i class="fa-solid fa-piggy-bank mr-1.5"></i> EPF
+        </button>
+        <button class="tab-btn px-4 py-2.5 rounded-xl text-sm font-semibold border border-slate-200 bg-white text-slate-700" data-tab="pcb" role="tab">
+          <i class="fa-solid fa-receipt mr-1.5"></i> PCB / Tax
+        </button>
+        <button class="tab-btn px-4 py-2.5 rounded-xl text-sm font-semibold border border-slate-200 bg-white text-slate-700" data-tab="mortgage" role="tab">
+          <i class="fa-solid fa-house mr-1.5"></i> Mortgage
+        </button>
+        <button class="tab-btn px-4 py-2.5 rounded-xl text-sm font-semibold border border-slate-200 bg-white text-slate-700" data-tab="car" role="tab">
+          <i class="fa-solid fa-car mr-1.5"></i> Car Loan
+        </button>
+        <button class="tab-btn px-4 py-2.5 rounded-xl text-sm font-semibold border border-slate-200 bg-white text-slate-700" data-tab="custom" role="tab">
+          <i class="fa-solid fa-calculator mr-1.5"></i> Custom Loan
+        </button>
+      </div>
+
+      <div class="mt-6 bg-white border border-slate-200 rounded-3xl shadow-soft p-5 md:p-8">
+        <!-- EPF -->
+        <div class="calc-panel" data-panel="epf">
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <h3 class="text-xl font-bold text-ink-900">EPF Savings Calculator</h3>
+              <p class="text-sm text-slate-600 mt-1">Estimate monthly and annual contributions from both you and your employer.</p>
+              <div class="mt-5 space-y-4">
+                <div>
+                  <label class="calc-label" for="epf-salary">Monthly Gross Salary (RM)</label>
+                  <input id="epf-salary" type="number" min="0" step="0.01" class="calc-input" placeholder="e.g. 6000" />
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                  <div>
+                    <label class="calc-label" for="epf-emp">Employee Rate (%)</label>
+                    <input id="epf-emp" type="number" min="0" step="0.01" class="calc-input" value="11" />
+                  </div>
+                  <div>
+                    <label class="calc-label" for="epf-er">Employer Rate (%)</label>
+                    <input id="epf-er" type="number" min="0" step="0.01" class="calc-input" value="13" />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="grid grid-cols-2 gap-4 content-start">
+              <div class="result-tile col-span-2">
+                <div class="l">Total monthly contribution</div>
+                <div class="v" id="epf-monthly">RM 0.00</div>
+              </div>
+              <div class="result-tile">
+                <div class="l">Employee / month</div>
+                <div class="v text-base" id="epf-emp-monthly">RM 0.00</div>
+              </div>
+              <div class="result-tile">
+                <div class="l">Employer / month</div>
+                <div class="v text-base" id="epf-er-monthly">RM 0.00</div>
+              </div>
+              <div class="result-tile col-span-2">
+                <div class="l">Estimated annual savings</div>
+                <div class="v" id="epf-annual">RM 0.00</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PCB -->
+        <div class="calc-panel hidden" data-panel="pcb">
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <h3 class="text-xl font-bold text-ink-900">PCB / Monthly Tax Deduction</h3>
+              <p class="text-sm text-slate-600 mt-1">A simplified estimate of your monthly tax deduction (illustrative only).</p>
+              <div class="mt-5 space-y-4">
+                <div>
+                  <label class="calc-label" for="pcb-income">Monthly Taxable Income (RM)</label>
+                  <input id="pcb-income" type="number" min="0" step="0.01" class="calc-input" placeholder="e.g. 7000" />
+                </div>
+                <div>
+                  <label class="calc-label" for="pcb-relief">Total Monthly Tax Reliefs (RM)</label>
+                  <input id="pcb-relief" type="number" min="0" step="0.01" class="calc-input" placeholder="e.g. 400" />
+                </div>
+                <p class="text-xs text-slate-500">Estimate applies a progressive slab model on the annual chargeable income.</p>
+              </div>
+            </div>
+            <div class="grid grid-cols-2 gap-4 content-start">
+              <div class="result-tile col-span-2">
+                <div class="l">Estimated monthly tax (PCB)</div>
+                <div class="v" id="pcb-monthly">RM 0.00</div>
+              </div>
+              <div class="result-tile">
+                <div class="l">Annual chargeable income</div>
+                <div class="v text-base" id="pcb-annual">RM 0.00</div>
+              </div>
+              <div class="result-tile">
+                <div class="l">Effective tax rate</div>
+                <div class="v text-base" id="pcb-rate">0%</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mortgage -->
+        <div class="calc-panel hidden" data-panel="mortgage">
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <h3 class="text-xl font-bold text-ink-900">Mortgage / Housing Loan</h3>
+              <p class="text-sm text-slate-600 mt-1">Standard amortization formula on reducing balance.</p>
+              <div class="mt-5 space-y-4">
+                <div>
+                  <label class="calc-label" for="mt-price">Property Price (RM)</label>
+                  <input id="mt-price" type="number" min="0" step="0.01" class="calc-input" placeholder="e.g. 600000" />
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                  <div>
+                    <label class="calc-label" for="mt-dp">Downpayment (%)</label>
+                    <input id="mt-dp" type="number" min="0" max="100" step="0.01" class="calc-input" value="10" />
+                  </div>
+                  <div>
+                    <label class="calc-label" for="mt-rate">Annual Interest (%)</label>
+                    <input id="mt-rate" type="number" min="0" step="0.01" class="calc-input" value="4.5" />
+                  </div>
+                </div>
+                <div>
+                  <label class="calc-label" for="mt-years">Tenure (Years)</label>
+                  <input id="mt-years" type="number" min="1" step="1" class="calc-input" value="30" />
+                </div>
+              </div>
+            </div>
+            <div class="grid grid-cols-2 gap-4 content-start">
+              <div class="result-tile col-span-2">
+                <div class="l">Monthly installment</div>
+                <div class="v" id="mt-monthly">RM 0.00</div>
+              </div>
+              <div class="result-tile">
+                <div class="l">Loan amount</div>
+                <div class="v text-base" id="mt-loan">RM 0.00</div>
+              </div>
+              <div class="result-tile">
+                <div class="l">Total interest</div>
+                <div class="v text-base" id="mt-interest">RM 0.00</div>
+              </div>
+              <div class="result-tile col-span-2">
+                <div class="l">Total repayment</div>
+                <div class="v" id="mt-total">RM 0.00</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Car -->
+        <div class="calc-panel hidden" data-panel="car">
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <h3 class="text-xl font-bold text-ink-900">Car Loan (Flat Rate)</h3>
+              <p class="text-sm text-slate-600 mt-1">Common for hire-purchase: interest is calculated on the original loan amount.</p>
+              <div class="mt-5 space-y-4">
+                <div>
+                  <label class="calc-label" for="car-price">Vehicle Price (RM)</label>
+                  <input id="car-price" type="number" min="0" step="0.01" class="calc-input" placeholder="e.g. 120000" />
+                </div>
+                <div>
+                  <label class="calc-label" for="car-dp">Downpayment (RM)</label>
+                  <input id="car-dp" type="number" min="0" step="0.01" class="calc-input" placeholder="e.g. 12000" />
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                  <div>
+                    <label class="calc-label" for="car-rate">Interest Rate (% p.a.)</label>
+                    <input id="car-rate" type="number" min="0" step="0.01" class="calc-input" value="3.5" />
+                  </div>
+                  <div>
+                    <label class="calc-label" for="car-years">Tenure (Years)</label>
+                    <input id="car-years" type="number" min="1" step="1" class="calc-input" value="7" />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="grid grid-cols-2 gap-4 content-start">
+              <div class="result-tile col-span-2">
+                <div class="l">Monthly payment</div>
+                <div class="v" id="car-monthly">RM 0.00</div>
+              </div>
+              <div class="result-tile">
+                <div class="l">Loan amount</div>
+                <div class="v text-base" id="car-loan">RM 0.00</div>
+              </div>
+              <div class="result-tile">
+                <div class="l">Total interest</div>
+                <div class="v text-base" id="car-interest">RM 0.00</div>
+              </div>
+              <div class="result-tile col-span-2">
+                <div class="l">Total repayment</div>
+                <div class="v" id="car-total">RM 0.00</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Custom -->
+        <div class="calc-panel hidden" data-panel="custom">
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <h3 class="text-xl font-bold text-ink-900">Customizable Loan</h3>
+              <p class="text-sm text-slate-600 mt-1">Bring your own numbers — ideal for personal loans, business credit lines, or projections.</p>
+              <div class="mt-5 space-y-4">
+                <div>
+                  <label class="calc-label" for="cu-amount">Loan Amount (RM)</label>
+                  <input id="cu-amount" type="number" min="0" step="0.01" class="calc-input" placeholder="e.g. 50000" />
+                </div>
+                <div>
+                  <label class="calc-label" for="cu-rate">Annual Interest Rate (%)</label>
+                  <input id="cu-rate" type="number" min="0" step="0.01" class="calc-input" value="6" />
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                  <div>
+                    <label class="calc-label" for="cu-tenure">Tenure</label>
+                    <input id="cu-tenure" type="number" min="1" step="1" class="calc-input" value="5" />
+                  </div>
+                  <div>
+                    <label class="calc-label" for="cu-unit">Unit</label>
+                    <select id="cu-unit" class="calc-input">
+                      <option value="years" selected>Years</option>
+                      <option value="months">Months</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="grid grid-cols-2 gap-4 content-start">
+              <div class="result-tile col-span-2">
+                <div class="l">Monthly installment</div>
+                <div class="v" id="cu-monthly">RM 0.00</div>
+              </div>
+              <div class="result-tile">
+                <div class="l">Total interest</div>
+                <div class="v text-base" id="cu-interest">RM 0.00</div>
+              </div>
+              <div class="result-tile">
+                <div class="l">Total repayment</div>
+                <div class="v text-base" id="cu-total">RM 0.00</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p class="mt-4 text-xs text-slate-500">All calculations are estimates for illustration only. Tax figures use a simplified progressive model and may not reflect your actual statutory deductions.</p>
+    </div>
+  </section>
+
+  <!-- ============== ADMIN / LEAD CRM (gated) ============== -->
+  <section id="admin" class="py-16 md:py-20 bg-white border-t border-slate-200 hidden">
+
+    <!-- Lock screen (shown until unlocked) -->
+    <div id="admin-lock" class="max-w-md mx-auto container-px text-center">
+      <div class="bg-white border border-slate-200 rounded-3xl shadow-soft p-8">
+        <div class="w-12 h-12 mx-auto rounded-2xl bg-gradient-to-br from-ink-900 to-ink-700 grid place-items-center text-white">
+          <i class="fa-solid fa-shield-halved"></i>
+        </div>
+        <h3 class="mt-4 text-xl font-bold text-ink-900">Restricted area</h3>
+        <p class="mt-1 text-sm text-slate-600">Enter the staff passphrase to view the lead CRM.</p>
+        <form id="admin-login" class="mt-5 space-y-3">
+          <input id="admin-pw" type="password" autocomplete="current-password" placeholder="Passphrase" class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white focus:border-brand-500 focus:ring-4 focus:ring-brand-100 outline-none text-sm" />
+          <button type="submit" class="w-full inline-flex items-center justify-center gap-2 bg-brand-600 hover:bg-brand-700 text-white font-semibold px-4 py-3 rounded-xl shadow-glow transition">
+            <i class="fa-solid fa-arrow-right-to-bracket"></i> Unlock
+          </button>
+          <p id="admin-err" class="hidden text-sm text-rose-600"></p>
+        </form>
+        <p class="mt-4 text-[11px] text-slate-400">Tip: <kbd class="px-1.5 py-0.5 rounded bg-slate-100 border border-slate-200 font-mono">⌘/Ctrl + Shift + A</kbd> also unlocks.</p>
+      </div>
+    </div>
+
+    <!-- Locked CRM content (shown only when unlocked) -->
+    <div id="admin-panel" class="hidden">
+      <div class="max-w-7xl mx-auto container-px">
+      <div class="flex items-end justify-between flex-wrap gap-4">
+        <div>
+          <div class="text-xs font-semibold tracking-widest text-brand-600 uppercase">Admin / Mini CRM</div>
+          <h2 class="mt-2 text-3xl md:text-4xl font-extrabold text-ink-900">Lead pipeline</h2>
+          <p class="mt-3 text-slate-600 max-w-2xl">All enquiries submitted via the contact form are saved to your browser's <code class="text-slate-800 bg-slate-100 px-1.5 py-0.5 rounded">localStorage</code> as a lightweight client-side CRM. Use this view to triage and act on them.</p>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <button id="admin-logout" class="inline-flex items-center gap-2 bg-white border border-slate-200 hover:border-slate-300 text-slate-700 font-semibold px-3 py-2.5 rounded-xl shadow-soft" title="Lock admin">
+            <i class="fa-solid fa-lock text-xs"></i> Lock
+          </button>
+          <button id="admin-refresh" class="inline-flex items-center gap-2 bg-white border border-slate-200 hover:border-slate-300 text-slate-800 font-semibold px-4 py-2.5 rounded-xl shadow-soft">
+            <i class="fa-solid fa-rotate"></i> Refresh
+          </button>
+          <button id="admin-export" class="inline-flex items-center gap-2 bg-white border border-slate-200 hover:border-slate-300 text-slate-800 font-semibold px-4 py-2.5 rounded-xl shadow-soft">
+            <i class="fa-solid fa-download"></i> Export CSV
+          </button>
+          <button id="admin-seed" class="inline-flex items-center gap-2 bg-white border border-slate-200 hover:border-slate-300 text-slate-800 font-semibold px-4 py-2.5 rounded-xl shadow-soft">
+            <i class="fa-solid fa-wand-magic-sparkles"></i> Add sample
+          </button>
+          <button id="admin-clear" class="inline-flex items-center gap-2 bg-rose-50 border border-rose-200 hover:border-rose-300 text-rose-700 font-semibold px-4 py-2.5 rounded-xl">
+            <i class="fa-solid fa-trash"></i> Clear all
+          </button>
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div id="admin-stats" class="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="card bg-white border border-slate-200 rounded-2xl p-5 shadow-soft">
+          <div class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Total leads</div>
+          <div class="mt-1 text-2xl font-extrabold text-ink-900" id="stat-total">0</div>
+        </div>
+        <div class="card bg-white border border-slate-200 rounded-2xl p-5 shadow-soft">
+          <div class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Today</div>
+          <div class="mt-1 text-2xl font-extrabold text-ink-900" id="stat-today">0</div>
+        </div>
+        <div class="card bg-white border border-slate-200 rounded-2xl p-5 shadow-soft">
+          <div class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Top service</div>
+          <div class="mt-1 text-lg font-bold text-ink-900 truncate" id="stat-top-service">—</div>
+        </div>
+        <div class="card bg-white border border-slate-200 rounded-2xl p-5 shadow-soft">
+          <div class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Last received</div>
+          <div class="mt-1 text-sm font-semibold text-ink-900" id="stat-last">Never</div>
+        </div>
+      </div>
+
+      <!-- Filters -->
+      <div class="mt-8 grid md:grid-cols-3 gap-3">
+        <div class="relative md:col-span-2">
+          <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+          <input id="admin-search" type="search" placeholder="Search by name, email, service or message…" class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-200 bg-white text-sm focus:border-brand-500 focus:ring-4 focus:ring-brand-100 outline-none" />
+        </div>
+        <select id="admin-filter-service" class="w-full px-3 py-2.5 rounded-xl border border-slate-200 bg-white text-sm focus:border-brand-500 focus:ring-4 focus:ring-brand-100 outline-none">
+          <option value="">All services</option>
+          <option>Corporate Training Services</option>
+          <option>Medical-Related Consulting</option>
+          <option>Safety Consulting</option>
+          <option>Marketing Services</option>
+          <option>Commercial Packaging Services</option>
+          <option>Other / Not sure</option>
+        </select>
+      </div>
+
+      <!-- Table -->
+      <div class="mt-4 bg-white border border-slate-200 rounded-2xl shadow-soft overflow-hidden">
+        <div class="overflow-x-auto">
+          <table class="admin-table min-w-full text-sm">
+            <thead class="bg-slate-50 border-b border-slate-200">
+              <tr>
+                <th class="text-left px-4 py-3">Created</th>
+                <th class="text-left px-4 py-3">Name</th>
+                <th class="text-left px-4 py-3">Email</th>
+                <th class="text-left px-4 py-3">Phone</th>
+                <th class="text-left px-4 py-3">Service</th>
+                <th class="text-left px-4 py-3">Message</th>
+                <th class="text-left px-4 py-3">Status</th>
+                <th class="text-right px-4 py-3">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="admin-tbody" class="divide-y divide-slate-100"></tbody>
+          </table>
+        </div>
+        <div id="admin-empty" class="hidden p-10 text-center text-sm text-slate-500">
+          <i class="fa-regular fa-folder-open text-3xl text-slate-300"></i>
+          <p class="mt-3 font-semibold text-slate-700">No leads yet</p>
+          <p class="mt-1">Submit a test enquiry on the contact form, or click "Add sample" to populate this view.</p>
+        </div>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Toast -->
+  <div id="toast" class="toast" role="status" aria-live="polite">
+    <i class="fa-solid fa-circle-check text-emerald-400"></i>
+    <span id="toast-text">Saved</span>
+  </div>
+
+  <script>
+    /* =========================================================
+       Helpers
+       ========================================================= */
+    const $  = (sel, root=document) => root.querySelector(sel);
+    const $$ = (sel, root=document) => Array.from(root.querySelectorAll(sel));
+    const fmt = (n) => 'RM ' + (Number.isFinite(n) ? n : 0).toLocaleString('en-MY', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    const LEADS_KEY = 'kumyu_leads';
+
+    /* =========================================================
+       Mobile menu
+       ========================================================= */
+    const menuBtn = $('#menuBtn');
+    const mobileMenu = $('#mobileMenu');
+    menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+    $$('#mobileMenu a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.add('hidden')));
+
+    /* =========================================================
+       Tabs (calculators)
+       ========================================================= */
+    const tabBtns = $$('.tab-btn');
+    const panels  = $$('.calc-panel');
+    tabBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        tabBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const tab = btn.dataset.tab;
+        panels.forEach(p => p.classList.toggle('hidden', p.dataset.panel !== tab));
+        computeAll();
+      });
+    });
+
+    /* =========================================================
+       Calculators
+       ========================================================= */
+    const num = (id) => {
+      const v = parseFloat($('#'+id).value);
+      return Number.isFinite(v) ? v : 0;
+    };
+
+    function computeEPF() {
+      const salary = num('epf-salary'), emp = num('epf-emp'), er = num('epf-er');
+      const empM = salary * emp / 100, erM = salary * er / 100, totalM = empM + erM;
+      $('#epf-emp-monthly').textContent = fmt(empM);
+      $('#epf-er-monthly').textContent  = fmt(erM);
+      $('#epf-monthly').textContent     = fmt(totalM);
+      $('#epf-annual').textContent      = fmt(totalM * 12);
+    }
+
+    function computePCB() {
+      const income = Math.max(0, num('pcb-income'));
+      const relief = Math.max(0, num('pcb-relief'));
+      const monthlyChargeable = Math.max(0, income - relief);
+      const annualChargeable  = monthlyChargeable * 12;
+
+      const slabs = [
+        { up: 5000,    rate: 0.00, sub: 0 },
+        { up: 20000,   rate: 0.01, sub: 0 },
+        { up: 35000,   rate: 0.03, sub: 150 },
+        { up: 50000,   rate: 0.06, sub: 600 },
+        { up: 70000,   rate: 0.11, sub: 1800 },
+        { up: 100000,  rate: 0.19, sub: 4000 },
+        { up: 250000,  rate: 0.25, sub: 7000 },
+        { up: 400000,  rate: 0.26, sub: 14500 },
+        { up: 600000,  rate: 0.28, sub: 22500 },
+        { up: 1000000, rate: 0.30, sub: 34500 },
+        { up: Infinity,rate: 0.32, sub: 70500 },
+      ];
+      let annualTax = 0;
+      for (const s of slabs) {
+        if (annualChargeable <= s.up) { annualTax = annualChargeable * s.rate - s.sub; break; }
+      }
+      annualTax = Math.max(0, annualTax);
+      const monthlyTax = annualTax / 12;
+      const eff = income > 0 ? (annualTax / (income * 12)) * 100 : 0;
+
+      $('#pcb-monthly').textContent = fmt(monthlyTax);
+      $('#pcb-annual').textContent  = fmt(annualChargeable);
+      $('#pcb-rate').textContent    = eff.toFixed(2) + '%';
+    }
+
+    function computeMortgage() {
+      const price = num('mt-price'), dp = num('mt-dp'), rate = num('mt-rate'), years = Math.max(1, num('mt-years'));
+      const loan = Math.max(0, price * (1 - dp/100));
+      const r = (rate/100) / 12, n = years * 12;
+      let monthly = 0;
+      if (r > 0) monthly = loan * (r * Math.pow(1+r, n)) / (Math.pow(1+r, n) - 1);
+      else monthly = loan / n;
+      const total = monthly * n, interest = total - loan;
+      $('#mt-loan').textContent     = fmt(loan);
+      $('#mt-monthly').textContent  = fmt(monthly);
+      $('#mt-interest').textContent = fmt(interest);
+      $('#mt-total').textContent    = fmt(total);
+    }
+
+    function computeCar() {
+      const price = num('car-price'), dp = num('car-dp'), rate = num('car-rate'), years = Math.max(1, num('car-years'));
+      const loan = Math.max(0, price - dp);
+      const months = years * 12;
+      const totalInterest = loan * (rate/100) * years;
+      const total = loan + totalInterest;
+      const monthly = months > 0 ? total / months : 0;
+      $('#car-loan').textContent     = fmt(loan);
+      $('#car-monthly').textContent  = fmt(monthly);
+      $('#car-interest').textContent = fmt(totalInterest);
+      $('#car-total').textContent    = fmt(total);
+    }
+
+    function computeCustom() {
+      const amount = num('cu-amount'), rate = num('cu-rate'), tenure = Math.max(1, num('cu-tenure'));
+      const unit = $('#cu-unit').value;
+      let n = unit === 'years' ? tenure * 12 : tenure;
+      const r = (rate/100) / 12;
+      let monthly = 0, total = 0, interest = 0;
+      if (n > 0) {
+        if (r > 0) monthly = amount * (r * Math.pow(1+r, n)) / (Math.pow(1+r, n) - 1);
+        else monthly = amount / n;
+        total = monthly * n;
+        interest = total - amount;
+      }
+      $('#cu-monthly').textContent  = fmt(monthly);
+      $('#cu-interest').textContent = fmt(interest);
+      $('#cu-total').textContent    = fmt(total);
+    }
+
+    function computeAll() {
+      computeEPF(); computePCB(); computeMortgage(); computeCar(); computeCustom();
+    }
+    computeAll();
+    $$('input, select').forEach(el => {
+      el.addEventListener('input',  computeAll);
+      el.addEventListener('change', computeAll);
+    });
+
+    /* =========================================================
+       Knowledge Base / Google-style Search
+       - Internal: articles + FAQs (KumYu-authored)
+       - External: curated, vetted public resources
+       ========================================================= */
+
+    const KB = {
+      articles: [
+        // -------- Corporate Training --------
+        { id:'a1',  title:'Designing a corporate training program that actually changes behavior',
+          excerpt:'Most training fails because it measures attendance, not behavior change. Here is the 4-step framework we use with mid-market clients to lock in measurable outcomes.',
+          topic:'Corporate Training', tags:['training','learning','L&D','behavior change','curriculum'],
+          url:'#article-a1', read:'6 min', source:'KumYu', icon:'fa-solid fa-chalkboard-user' },
+        { id:'a2',  title:'Leadership development for SMEs: a 90-day primer',
+          excerpt:'A condensed playbook for SMEs that want leadership training without the 12-month consultant price tag. Includes session templates and KPIs.',
+          topic:'Corporate Training', tags:['leadership','training','management','KPI'],
+          url:'#article-a2', read:'5 min', source:'KumYu', icon:'fa-solid fa-chalkboard-user' },
+        { id:'a3',  title:'Why your sales training is not moving the number (and the fix)',
+          excerpt:'The classic stall: training delivered, certificates issued, pipeline the same. We break down the three missing layers.',
+          topic:'Corporate Training', tags:['sales','training','enablement'],
+          url:'#article-a3', read:'4 min', source:'KumYu', icon:'fa-solid fa-chalkboard-user' },
+
+        // -------- Medical / Healthcare --------
+        { id:'a4',  title:'Setting up a private clinic in Malaysia: a 2025 licensing checklist',
+          excerpt:'From premise layout to MOH submission, here is the running checklist KumYu uses for clinic set-up engagements, with real timelines.',
+          topic:'Medical-Related Consulting', tags:['clinic','licensing','MOH','Malaysian','healthcare','regulation'],
+          url:'#article-a4', read:'7 min', source:'KumYu', icon:'fa-solid fa-stethoscope' },
+        { id:'a5',  title:'SOPs that auditors actually read: medical SOP design 101',
+          excerpt:'Most SOP binders are written to satisfy a checklist, not an auditor on a Tuesday afternoon. Here is how we rewrite them so they are usable.',
+          topic:'Medical-Related Consulting', tags:['SOP','healthcare','compliance','audit'],
+          url:'#article-a5', read:'6 min', source:'KumYu', icon:'fa-solid fa-stethoscope' },
+        { id:'a6',  title:'Choosing a clinic management system: 7 features that matter',
+          excerpt:'A short, opinionated guide to selecting a CMS for a 2–10 doctor clinic. What to prioritise, what to ignore, what to skip.',
+          topic:'Medical-Related Consulting', tags:['clinic','software','CMS','healthcare'],
+          url:'#article-a6', read:'5 min', source:'KumYu', icon:'fa-solid fa-stethoscope' },
+
+        // -------- Safety / OSH --------
+        { id:'a7',  title:'OSH in Malaysia: a primer for HR and operations leads',
+          excerpt:'A non-lawyer-friendly walkthrough of OSHA 1994, the 2022 amendments, and what mid-market employers actually owe their workers.',
+          topic:'Safety Consulting', tags:['OSH','safety','OSHA','Malaysia','regulation','risk assessment'],
+          url:'#article-a7', read:'8 min', source:'KumYu', icon:'fa-solid fa-helmet-safety' },
+        { id:'a8',  title:'Risk assessment in 5 steps (with a free template)',
+          excerpt:'A copy-pasteable risk register format KumYu has used in 80+ workplaces — JSA, hazard ID, control measures, residual risk, review cadence.',
+          topic:'Safety Consulting', tags:['risk assessment','HIRARC','JSA','safety'],
+          url:'#article-a8', read:'6 min', source:'KumYu', icon:'fa-solid fa-helmet-safety' },
+        { id:'a9',  title:'ISO 45001 vs OSH: do you need both?',
+          excerpt:'Short answer: OSH is the law, ISO 45001 is the system. Here is when each pays off, and how we help clients implement without doubling the work.',
+          topic:'Safety Consulting', tags:['ISO 45001','OSH','compliance','certification'],
+          url:'#article-a9', read:'5 min', source:'KumYu', icon:'fa-solid fa-helmet-safety' },
+
+        // -------- Marketing --------
+        { id:'a10', title:'The 90-day B2B marketing plan for SMEs',
+          excerpt:'Positioning, channels, offers, measurement — a tight 90-day plan you can run without an agency. Includes weekly checklists.',
+          topic:'Marketing Services', tags:['marketing','B2B','SME','brand','performance'],
+          url:'#article-a10', read:'7 min', source:'KumYu', icon:'fa-solid fa-bullhorn' },
+        { id:'a11', title:'Brand messaging workshop: a 3-hour format we actually use',
+          excerpt:'A facilitator-ready agenda to align a leadership team on positioning, value prop and one-line pitch in a single session.',
+          topic:'Marketing Services', tags:['brand','messaging','workshop'],
+          url:'#article-a11', read:'4 min', source:'KumYu', icon:'fa-solid fa-bullhorn' },
+        { id:'a12', title:'Marketing analytics without an analyst: the 5 dashboards you need',
+          excerpt:'The minimum-viable analytics stack for an SME marketing team — what to track, what to ignore, and how to share results weekly.',
+          topic:'Marketing Services', tags:['analytics','dashboards','measurement'],
+          url:'#article-a12', read:'6 min', source:'KumYu', icon:'fa-solid fa-bullhorn' },
+
+        // -------- Packaging --------
+        { id:'a13', title:'Packaging sourcing from China and Vietnam: a buyer\'s checklist',
+          excerpt:'A practical, opinionated checklist KumYu uses for cross-border packaging procurement. Avoid the 5 mistakes that wreck timelines.',
+          topic:'Commercial Packaging Services', tags:['packaging','sourcing','China','Vietnam','supply chain'],
+          url:'#article-a13', read:'6 min', source:'KumYu', icon:'fa-solid fa-box-open' },
+        { id:'a14', title:'Structural vs graphic packaging design: who owns what',
+          excerpt:'Most packaging projects stall because nobody defined the split. Here is how we run a clean two-track design process.',
+          topic:'Commercial Packaging Services', tags:['packaging','design','structural','graphic'],
+          url:'#article-a14', read:'5 min', source:'KumYu', icon:'fa-solid fa-box-open' },
+      ],
+
+      faqs: [
+        { id:'q1', q:'What industries do you typically serve?', a:'SMEs and mid-market companies across healthcare, manufacturing, retail, F&B and professional services. Each engagement is tailored — no two clients get the same playbook.',
+          topic:'Corporate Training', tags:['industries','clients','SME'] },
+        { id:'q2', q:'How long does a typical corporate training program take?', a:'Most programs run 6–12 weeks with weekly sessions. Short executive workshops are 2–3 days. We always propose the shortest path to a measurable outcome.',
+          topic:'Corporate Training', tags:['training','duration','timeline'] },
+        { id:'q3', q:'Do you help with clinic licensing and accreditation?', a:'Yes. Our medical consulting team supports end-to-end clinic set-up, including facility layout, regulatory documentation, SOP design and accreditation readiness.',
+          topic:'Medical-Related Consulting', tags:['clinic','licensing','MOH'] },
+        { id:'q4', q:'What does your safety consulting cover?', a:'Risk assessments, OSH policy drafting, incident investigation, on-site audits, and employee safety training — aligned to local OSH regulations.',
+          topic:'Safety Consulting', tags:['safety','OSH','audit'] },
+        { id:'q5', q:'How is pricing structured?', a:'Project-based for consulting, retainer for ongoing marketing. Training is priced per cohort. You get a fixed-fee proposal after a discovery call — no hourly billing.',
+          topic:'Pricing', tags:['pricing','fees','proposal'] },
+        { id:'q6', q:'Can you handle packaging sourcing overseas?', a:'Yes. We coordinate with vetted vendors in China, Vietnam and Malaysia for structural design, material sourcing, QA and shipping — all with a single point of contact.',
+          topic:'Commercial Packaging Services', tags:['packaging','sourcing','China','Vietnam'] },
+        { id:'q7', q:'How quickly can we get started?', a:'Typically within 1–2 weeks of contract signing. Discovery calls can usually be scheduled within 48 hours.',
+          topic:'Engagement', tags:['timeline','start','engagement'] },
+        { id:'q8', q:'Do you provide compliance documentation for audits?', a:'Yes. We prepare full audit-ready documentation including SOPs, training records, risk registers and corrective action logs for both safety and medical engagements.',
+          topic:'Safety Consulting', tags:['audit','compliance','documentation'] },
+        { id:'q9', q:'What is your discovery call like?', a:'A 20-minute call with a senior consultant. We ask 4–5 questions, share an initial take, and quote a follow-up proposal only if there is a clear fit.',
+          topic:'Engagement', tags:['discovery','call','process'] },
+      ],
+
+      // Curated external resources (vetted, authoritative). Edit anytime.
+      external: [
+        { id:'e1',  title:'Occupational Safety and Health Act 1994 (Act 514) — full text',
+          excerpt:'Authoritative legal text of Malaysia\'s OSH Act, the foundation of all safety compliance work in the country.',
+          url:'https://www.ilo.org/dyn/natlex/natlex4.detail?p_lang=en&p_isn=44653', site:'ILO NATLEX', tags:['OSH','OSHA','Malaysia','law','safety'], topic:'Safety Consulting' },
+        { id:'e2',  title:'Department of Occupational Safety & Health (DOSH) Malaysia',
+          excerpt:'The regulator for workplace safety in Malaysia. Guidance, reporting tools, training providers list.',
+          url:'https://www.dosh.gov.my/', site:'DOSH Malaysia', tags:['OSH','safety','Malaysia','regulation'], topic:'Safety Consulting' },
+        { id:'e3',  title:'ISO 45001:2018 — Occupational health and safety management systems',
+          excerpt:'The international standard KumYu maps clients to when they want a system, not just a policy.',
+          url:'https://www.iso.org/standard/63787.html', site:'ISO', tags:['ISO 45001','safety','certification'], topic:'Safety Consulting' },
+
+        { id:'e4',  title:'EPF (Employees Provident Fund) — official portal',
+          excerpt:'Statutory contribution rates, withdrawal rules and online account access for employees in Malaysia.',
+          url:'https://www.kwsp.gov.my/', site:'KWSP / EPF', tags:['EPF','KWSP','statutory','Malaysia'], topic:'Corporate Training' },
+        { id:'e5',  title:'Inland Revenue Board (LHDN) — PCB / MTD guidance',
+          excerpt:'Official explanation of Potongan Cukai Bulanan (monthly tax deduction) and the relevant public rules.',
+          url:'https://www.hasil.gov.my/en/individual/tax-payer-coverage/income-tax-2/', site:'LHDN', tags:['PCB','tax','LHDN','MTD','Malaysia'], topic:'Corporate Training' },
+        { id:'e6',  title:'HRDF / HRDCorp — training claimable under the fund',
+          excerpt:'The Malaysian training fund employers can draw on for approved programs. Useful to know before you book training.',
+          url:'https://www.hrdcorp.gov.my/', site:'HRDCorp', tags:['HRDF','HRDCorp','training','Malaysia'], topic:'Corporate Training' },
+
+        { id:'e7',  title:'Ministry of Health Malaysia — Private Healthcare Facilities & Services Act 1998',
+          excerpt:'The act governing private clinics and hospitals in Malaysia; essential reading for clinic set-up.',
+          url:'https://www.moh.gov.my/', site:'KKM / MOH', tags:['clinic','licensing','MOH','Malaysia','healthcare'], topic:'Medical-Related Consulting' },
+        { id:'e8',  title:'MSQH — Malaysian Society for Quality in Health',
+          excerpt:'The national accreditation body for healthcare facilities in Malaysia.',
+          url:'https://www.msqh.com.my/', site:'MSQH', tags:['accreditation','healthcare','MSQH'], topic:'Medical-Related Consulting' },
+
+        { id:'e9',  title:'FDA — Food labeling & packaging guidance (US, for export SKUs)',
+          excerpt:'Useful if your packaging ships to the US — handles labeling, allergens and claims.',
+          url:'https://www.fda.gov/food/food-labeling-nutrition', site:'US FDA', tags:['packaging','labeling','FDA','export'], topic:'Commercial Packaging Services' },
+        { id:'e10', title:'EU Packaging and Packaging Waste Regulation (PPWR)',
+          excerpt:'The new EU regulation KumYu clients exporting to Europe are increasingly being asked to comply with.',
+          url:'https://environment.ec.europa.eu/topics/waste-and-recycling/packaging-waste_en', site:'European Commission', tags:['packaging','EU','compliance','export'], topic:'Commercial Packaging Services' },
+        { id:'e11', title:'Google Business Profile — official help center',
+          excerpt:'Foundational for any SME\'s local SEO and lead-capture funnel.',
+          url:'https://support.google.com/business/answer/3039617', site:'Google', tags:['marketing','SEO','local'], topic:'Marketing Services' },
+        { id:'e12', title:'Meta Business Suite — ads & content tools',
+          excerpt:'Where most SMEs manage Meta paid social. KumYu sets up campaigns here for clients monthly.',
+          url:'https://business.facebook.com/', site:'Meta', tags:['marketing','Meta','Facebook','ads'], topic:'Marketing Services' },
+      ],
+    };
+
+    // Wire icons + colors per topic
+    const TOPICS = [
+      { key:'Corporate Training',         icon:'fa-solid fa-chalkboard-user', color:'brand' },
+      { key:'Medical-Related Consulting', icon:'fa-solid fa-stethoscope',     color:'mint'  },
+      { key:'Safety Consulting',          icon:'fa-solid fa-helmet-safety',   color:'brand' },
+      { key:'Marketing Services',         icon:'fa-solid fa-bullhorn',        color:'mint'  },
+      { key:'Commercial Packaging Services', icon:'fa-solid fa-box-open',    color:'brand' },
+    ];
+
+    const TOPIC_COUNTS = KB.articles.reduce((m,a)=>(m[a.topic]=(m[a.topic]||0)+1,m), {});
+    const ALL_RESULTS = [
+      ...KB.articles.map(x => ({ kind:'articles', ...x })),
+      ...KB.faqs.map(x     => ({ kind:'faqs', q:x.q, a:x.a, topic:x.topic, tags:x.tags, id:x.id })),
+      ...KB.external.map(x => ({ kind:'external', title:x.title, excerpt:x.excerpt, url:x.url, site:x.site, topic:x.topic, tags:x.tags, id:x.id })),
+    ];
+
+    const $q       = $('#kb-query');
+    const $tabs    = $$('.kb-tab');
+    const $resBox  = $('#kb-results');
+    const $empty   = $('#kb-empty');
+    const $default = $('#kb-default');
+    const $meta    = $('#kb-meta');
+    const $topics  = $('#kb-topics');
+    let activeFilter = 'all';
+    let lastQuery = '';
+
+    // escape helpers
+    const esc = (s) => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    const escAttr = esc;
+
+    // Highlight matches inside a string
+    function hl(text, q) {
+      if (!q) return esc(text);
+      const safe = esc(text);
+      const re = new RegExp('(' + q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&') + ')','ig');
+      return safe.replace(re, '<mark class="bg-yellow-100 text-ink-900 rounded px-0.5">$1</mark>');
+    }
+
+    // Simple relevance score
+    function score(item, terms) {
+      const haystack = (
+        (item.title || item.q || '') + ' ' +
+        (item.excerpt || item.a || '') + ' ' +
+        (item.topic || '') + ' ' +
+        ((item.tags || []).join(' '))
+      ).toLowerCase();
+      let s = 0;
+      for (const t of terms) {
+        if (!t) continue;
+        const idx = haystack.indexOf(t);
+        if (idx === -1) continue;
+        s += 10;
+        if (idx < 40) s += 5;                       // title boost
+        const re = new RegExp(t, 'g');
+        s += (haystack.match(re) || []).length;     // frequency boost
+      }
+      return s;
+    }
+
+    function topicBadge(topic) {
+      const meta = TOPICS.find(t => t.key === topic) || { icon:'fa-solid fa-circle', color:'brand' };
+      const tone = meta.color === 'mint'
+        ? 'bg-mint-50 text-mint-700 border-mint-100'
+        : 'bg-brand-50 text-brand-700 border-brand-100';
+      return `<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[11px] font-semibold border ${tone}"><i class="${meta.icon} text-[10px]"></i>${esc(topic)}</span>`;
+    }
+
+    function kindBadge(kind) {
+      if (kind === 'articles') return `<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[11px] font-semibold bg-slate-100 text-slate-700"><i class="fa-regular fa-newspaper text-[10px]"></i>Article</span>`;
+      if (kind === 'faqs')     return `<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[11px] font-semibold bg-amber-50 text-amber-700"><i class="fa-regular fa-circle-question text-[10px]"></i>FAQ</span>`;
+      if (kind === 'external') return `<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[11px] font-semibold bg-sky-50 text-sky-700"><i class="fa-solid fa-globe text-[10px]"></i>Web</span>`;
+      return '';
+    }
+
+    function renderResults(list, q) {
+      // Counts per tab
+      const counts = { all: list.length, articles:0, faqs:0, external:0 };
+      list.forEach(it => counts[it.kind] = (counts[it.kind]||0)+1);
+      $('#kb-c-all').textContent       = counts.all;
+      $('#kb-c-articles').textContent  = counts.articles;
+      $('#kb-c-faqs').textContent      = counts.faqs;
+      $('#kb-c-external').textContent  = counts.external;
+
+      const filtered = activeFilter === 'all' ? list : list.filter(x => x.kind === activeFilter);
+
+      if (!q) {
+        $resBox.innerHTML = '';
+        $empty.classList.add('hidden');
+        $default.classList.remove('hidden');
+        $meta.textContent = 'Showing latest resources';
+        return;
+      }
+
+      $default.classList.add('hidden');
+      if (filtered.length === 0) {
+        $resBox.innerHTML = '';
+        $empty.classList.remove('hidden');
+        $meta.textContent = `0 results for "${q}"`;
+        return;
+      }
+      $empty.classList.add('hidden');
+      $meta.textContent = `${filtered.length} ${filtered.length===1?'result':'results'} for "${q}"`;
+
+      $resBox.innerHTML = filtered.map(it => {
+        const title    = it.title || it.q || '';
+        const snippet  = it.excerpt || it.a || '';
+        const isExt    = it.kind === 'external';
+        const href     = isExt ? it.url : (it.url || '#');
+        const target   = isExt ? 'target="_blank" rel="noopener noreferrer"' : '';
+        const showTag  = isExt ? it.site : (it.read ? `${it.read} read` : (it.tags ? it.tags.slice(0,2).join(' · ') : ''));
+
+        return `
+          <article class="card group bg-white border border-slate-200 rounded-2xl p-5 md:p-6 shadow-soft">
+            <div class="flex items-start gap-4">
+              <div class="hidden sm:flex w-10 h-10 rounded-xl bg-brand-50 text-brand-700 grid place-items-center shrink-0">
+                <i class="${it.icon || (it.kind==='faqs' ? 'fa-regular fa-circle-question' : 'fa-regular fa-newspaper')}"></i>
+              </div>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center gap-2 flex-wrap mb-1.5">
+                  ${kindBadge(it.kind)}
+                  ${topicBadge(it.topic || '')}
+                </div>
+                <a href="${escAttr(href)}" ${target} class="block">
+                  <h3 class="text-base md:text-lg font-bold text-ink-900 group-hover:text-brand-700 transition leading-snug">${hl(title,q)}</h3>
+                </a>
+                <p class="mt-1.5 text-sm text-slate-600 line-clamp-2">${hl(snippet,q)}</p>
+                <div class="mt-2.5 flex items-center gap-3 text-xs text-slate-500">
+                  <span class="inline-flex items-center gap-1"><i class="fa-solid fa-globe text-[10px]"></i>${esc(showTag)}</span>
+                  ${isExt ? `<span class="inline-flex items-center gap-1 text-slate-400">${esc(it.site)}</span>` : ''}
+                </div>
+              </div>
+            </div>
+          </article>
+        `;
+      }).join('');
+    }
+
+    function runSearch() {
+      const raw = ($q.value || '').trim();
+      lastQuery = raw;
+      const terms = raw.toLowerCase().split(/\s+/).filter(Boolean);
+
+      if (!terms.length) return renderResults([], '');
+
+      const scored = ALL_RESULTS
+        .map(it => ({ ...it, _s: score(it, terms) }))
+        .filter(it => it._s > 0)
+        .sort((a,b) => b._s - a._s);
+      renderResults(scored, raw);
+    }
+
+    function renderTopicBrowser() {
+      const counts = TOPICS.map(t => ({
+        ...t,
+        count: TOPIC_COUNTS[t.key] || 0,
+      }));
+      $topics.innerHTML = counts.map(t => {
+        const isMint = t.color === 'mint';
+        return `
+          <button class="kb-topic card text-left w-full bg-white border border-slate-200 rounded-2xl p-5 shadow-soft group" data-topic="${escAttr(t.key)}">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-xl ${isMint?'bg-mint-50 text-mint-700':'bg-brand-50 text-brand-700'} grid place-items-center group-hover:scale-105 transition">
+                <i class="${t.icon}"></i>
+              </div>
+              <div class="min-w-0">
+                <div class="font-semibold text-ink-900">${esc(t.key)}</div>
+                <div class="text-xs text-slate-500">${t.count} ${t.count===1?'article':'articles'}</div>
+              </div>
+              <i class="fa-solid fa-arrow-right ml-auto text-slate-400 group-hover:text-brand-700 group-hover:translate-x-1 transition"></i>
+            </div>
+          </button>
+        `;
+      }).join('');
+
+      $$('#kb-topics .kb-topic').forEach(btn => {
+        btn.addEventListener('click', () => {
+          $q.value = btn.dataset.topic;
+          runSearch();
+          $q.focus();
+          window.scrollTo({ top: document.getElementById('faq').offsetTop - 80, behavior: 'smooth' });
+        });
+      });
+    }
+
+    // Wire events
+    $q.addEventListener('input', runSearch);
+    $q.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') { $q.value=''; runSearch(); return; }
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        const q = ($q.value || '').trim();
+        if (q) openWebSearch(q);
+      }
+    });
+
+    $$('.kb-chip').forEach(b => b.addEventListener('click', () => {
+      const q = (b.dataset.q || '').trim();
+      $q.value = q;
+      runSearch();
+      $q.focus();
+      // Also open a fresh web search in a new tab so users actually get web results
+      if (q) window.open('https://duckduckgo.com/?q=' + encodeURIComponent('site:kumyu.example OR ' + q), '_blank', 'noopener,noreferrer');
+    }));
+
+    // "Search the web" button — open query in DuckDuckGo in a new tab
+    function openWebSearch(q) {
+      const site = 'site:kumyu.example OR '; // bias toward KumYu domain if you set one
+      const url = 'https://duckduckgo.com/?q=' + encodeURIComponent((site + q).trim());
+      window.open(url, '_blank', 'noopener,noreferrer');
+    }
+    $('#kb-web')?.addEventListener('click', () => {
+      const q = ($q.value || '').trim();
+      if (!q) { $q.focus(); return; }
+      openWebSearch(q);
+    });
+
+    $tabs.forEach(t => t.addEventListener('click', () => {
+      $tabs.forEach(x => { x.classList.remove('bg-brand-600','text-white','shadow-glow'); x.removeAttribute('aria-selected'); });
+      t.classList.add('bg-brand-600','text-white','shadow-glow');
+      t.setAttribute('aria-selected','true');
+      activeFilter = t.dataset.filter;
+      runSearch();
+    }));
+    // initial active style
+    $tabs[0]?.classList.add('bg-brand-600','text-white','shadow-glow');
+    $tabs[0]?.setAttribute('aria-selected','true');
+
+    document.addEventListener('keydown', (e) => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        $q.focus();
+        $q.select();
+      }
+    });
+
+    // Default render
+    renderTopicBrowser();
+    renderResults([], '');
+
+    /* =========================================================
+       Lead form + Admin / CRM
+       ========================================================= */
+    const form = $('#lead-form');
+    const toast = $('#toast');
+    const toastText = $('#toast-text');
+    let toastTimer = null;
+    function showToast(msg) {
+      toastText.textContent = msg;
+      toast.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove('show'), 2800);
+    }
+    function setError(field, on) {
+      const node = form.querySelector(`[data-error="${field}"]`);
+      if (node) node.classList.toggle('hidden', !on);
+    }
+    const isEmail = (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+
+    function loadLeads() {
+      try { return JSON.parse(localStorage.getItem(LEADS_KEY) || '[]'); }
+      catch (e) { return []; }
+    }
+    function saveLeads(list) {
+      localStorage.setItem(LEADS_KEY, JSON.stringify(list));
+    }
+    function nextId() {
+      return 'lead_' + Date.now().toString(36) + '_' + Math.random().toString(36).slice(2, 6);
+    }
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const data = {
+        name:    $('#lf-name').value.trim(),
+        email:   $('#lf-email').value.trim(),
+        phone:   $('#lf-phone').value.trim(),
+        service: $('#lf-service').value,
+        message: $('#lf-message').value.trim(),
+      };
+
+      let ok = true;
+      if (!data.name)              { setError('name', true);    ok = false; } else setError('name', false);
+      if (!isEmail(data.email))    { setError('email', true);   ok = false; } else setError('email', false);
+      if (!data.service)           { setError('service', true); ok = false; } else setError('service', false);
+      if (data.message.length < 5) { setError('message', true); ok = false; } else setError('message', false);
+      if (!ok) return;
+
+      const lead = {
+        id: nextId(),
+        createdAt: new Date().toISOString(),
+        ...data,
+        source: 'website',
+        status: 'new',
+      };
+      const list = loadLeads();
+      list.unshift(lead); // newest first
+      saveLeads(list);
+
+      form.reset();
+      showToast('Thanks! Your enquiry has been received.');
+      renderAdmin();
+    });
+
+    ['lf-name','lf-email','lf-service','lf-message'].forEach(id => {
+      const el = $('#'+id);
+      el.addEventListener('input', () => {
+        const map = { 'lf-name':'name', 'lf-email':'email', 'lf-service':'service', 'lf-message':'message' };
+        setError(map[id], false);
+      });
+    });
+
+    /* ---- Admin: render, filter, export, clear, seed ---- */
+    const adminTbody   = $('#admin-tbody');
+    const adminEmpty   = $('#admin-empty');
+    const adminSearch  = $('#admin-search');
+    const adminFilter  = $('#admin-filter-service');
+
+    function fmtDate(iso) {
+      const d = new Date(iso);
+      if (isNaN(d)) return '—';
+      return d.toLocaleString('en-GB', { day:'2-digit', month:'short', year:'numeric', hour:'2-digit', minute:'2-digit' });
+    }
+    function relTime(iso) {
+      const d = new Date(iso);
+      const diff = (Date.now() - d.getTime()) / 1000;
+      if (isNaN(d) || diff < 0) return '—';
+      if (diff < 60) return 'just now';
+      if (diff < 3600) return Math.floor(diff/60) + 'm ago';
+      if (diff < 86400) return Math.floor(diff/3600) + 'h ago';
+      if (diff < 86400*7) return Math.floor(diff/86400) + 'd ago';
+      return d.toLocaleDateString();
+    }
+
+    function statusBadge(s) {
+      const map = {
+        new:      'bg-brand-50 text-brand-700 border-brand-100',
+        contacted:'bg-amber-50 text-amber-700 border-amber-100',
+        won:      'bg-mint-50 text-mint-700 border-mint-100',
+        lost:     'bg-rose-50 text-rose-700 border-rose-100',
+      };
+      const cls = map[s] || map.new;
+      return `<span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold border ${cls} capitalize">${s || 'new'}</span>`;
+    }
+
+    function applyFilter(list) {
+      const q = (adminSearch?.value || '').trim().toLowerCase();
+      const svc = adminFilter?.value || '';
+      return list.filter(l => {
+        const inQ = !q || (l.name||'').toLowerCase().includes(q)
+                       || (l.email||'').toLowerCase().includes(q)
+                       || (l.phone||'').toLowerCase().includes(q)
+                       || (l.service||'').toLowerCase().includes(q)
+                       || (l.message||'').toLowerCase().includes(q);
+        const inSvc = !svc || l.service === svc;
+        return inQ && inSvc;
+      });
+    }
+
+    function renderAdmin() {
+      const list = loadLeads();
+      const filtered = applyFilter(list);
+
+      // Stats
+      $('#stat-total').textContent = list.length;
+      const today = new Date().toDateString();
+      $('#stat-today').textContent = list.filter(l => new Date(l.createdAt).toDateString() === today).length;
+      const counts = {};
+      list.forEach(l => { const k = l.service || 'Unknown'; counts[k] = (counts[k]||0) + 1; });
+      const top = Object.entries(counts).sort((a,b)=>b[1]-a[1])[0];
+      $('#stat-top-service').textContent = top ? `${top[0]} (${top[1]})` : '—';
+      $('#stat-last').textContent = list[0] ? relTime(list[0].createdAt) : 'Never';
+
+      if (filtered.length === 0) {
+        adminTbody.innerHTML = '';
+        adminEmpty.classList.remove('hidden');
+        return;
+      }
+      adminEmpty.classList.add('hidden');
+      adminTbody.innerHTML = filtered.map(l => `
+        <tr data-id="${l.id}">
+          <td class="px-4 py-3 whitespace-nowrap text-slate-600">${fmtDate(l.createdAt)}<div class="text-[11px] text-slate-400">${relTime(l.createdAt)}</div></td>
+          <td class="px-4 py-3 font-semibold text-ink-900">${escapeHtml(l.name||'')}</td>
+          <td class="px-4 py-3 text-slate-700"><a href="mailto:${escapeHtml(l.email||'')}" class="hover:text-brand-700">${escapeHtml(l.email||'')}</a></td>
+          <td class="px-4 py-3 text-slate-700 whitespace-nowrap">${escapeHtml(l.phone||'—')}</td>
+          <td class="px-4 py-3 text-slate-700"><span class="inline-flex items-center px-2 py-0.5 rounded-md text-[11px] font-semibold bg-slate-100 text-slate-700">${escapeHtml(l.service||'—')}</span></td>
+          <td class="px-4 py-3 text-slate-600 max-w-xs"><div class="line-clamp-2">${escapeHtml(l.message||'')}</div></td>
+          <td class="px-4 py-3">${statusBadge(l.status||'new')}</td>
+          <td class="px-4 py-3 text-right whitespace-nowrap">
+            <select data-action="status" class="text-xs px-2 py-1 rounded-md border border-slate-200 bg-white">
+              <option value="new"${l.status==='new'?' selected':''}>New</option>
+              <option value="contacted"${l.status==='contacted'?' selected':''}>Contacted</option>
+              <option value="won"${l.status==='won'?' selected':''}>Won</option>
+              <option value="lost"${l.status==='lost'?' selected':''}>Lost</option>
+            </select>
+            <button data-action="delete" class="ml-1 inline-flex items-center justify-center w-7 h-7 rounded-md text-rose-600 hover:bg-rose-50" title="Delete"><i class="fa-solid fa-trash text-xs"></i></button>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    function escapeHtml(s) {
+      return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    }
+
+    // Row actions
+    adminTbody.addEventListener('click', (e) => {
+      const btn = e.target.closest('button[data-action]');
+      if (!btn) return;
+      const tr = btn.closest('tr');
+      const id = tr?.dataset.id;
+      if (!id) return;
+      if (btn.dataset.action === 'delete') {
+        const list = loadLeads().filter(l => l.id !== id);
+        saveLeads(list);
+        showToast('Lead removed');
+        renderAdmin();
+      }
+    });
+    adminTbody.addEventListener('change', (e) => {
+      if (e.target.matches('select[data-action="status"]')) {
+        const tr = e.target.closest('tr');
+        const id = tr?.dataset.id;
+        const list = loadLeads();
+        const lead = list.find(l => l.id === id);
+        if (lead) {
+          lead.status = e.target.value;
+          saveLeads(list);
+          showToast('Status updated');
+          renderAdmin();
+        }
+      }
+    });
+
+    // Filters
+    adminSearch?.addEventListener('input', renderAdmin);
+    adminFilter?.addEventListener('change', renderAdmin);
+
+    // Top buttons
+    $('#admin-refresh').addEventListener('click', () => { renderAdmin(); showToast('Refreshed'); });
+    $('#admin-clear').addEventListener('click', () => {
+      if (!confirm('Clear ALL leads from this browser? This cannot be undone.')) return;
+      saveLeads([]);
+      renderAdmin();
+      showToast('All leads cleared');
+    });
+    $('#admin-seed').addEventListener('click', () => {
+      const samples = [
+        { name:'Aisyah Rahman',  email:'aisyah@orchidhealth.example', phone:'+60 12-345 1111', service:'Medical-Related Consulting',  message:'Hi, we are planning to set up a specialist clinic in PJ and need help with licensing and SOPs.' },
+        { name:'Daniel Lee',     email:'daniel@northwindmfg.example', phone:'+60 16-222 9090', service:'Safety Consulting',            message:'Looking for a full OSH audit and a 6-month safety training program for 80 staff.' },
+        { name:'Priya Nair',     email:'priya@glowcosmetics.example', phone:'+60 19-888 1234', service:'Marketing Services',           message:'Need help launching a new skincare line — brand, paid social, and a content calendar.' },
+        { name:'Jason Wong',     email:'jason@greenleafpack.example', phone:'+60 11-555 7000', service:'Commercial Packaging Services', message:'Source retail-ready packaging for a new snack line. 2 SKUs initially, scaling to 8.' },
+        { name:'Maya Tan',       email:'maya@brightside.example',     phone:'+60 17-900 2345', service:'Corporate Training Services',   message:'We need a leadership program for our 12 mid-managers over Q1 next year.' },
+      ];
+      const list = loadLeads();
+      const now = Date.now();
+      samples.forEach((s, i) => {
+        list.unshift({
+          id: nextId(),
+          createdAt: new Date(now - i * 1000 * 60 * 60 * 6).toISOString(),
+          ...s,
+          source: 'seed',
+          status: i === 0 ? 'contacted' : 'new',
+        });
+      });
+      saveLeads(list);
+      renderAdmin();
+      showToast('Sample leads added');
+    });
+    $('#admin-export').addEventListener('click', () => {
+      const list = applyFilter(loadLeads());
+      if (!list.length) { showToast('Nothing to export'); return; }
+      const headers = ['id','createdAt','name','email','phone','service','message','status','source'];
+      const rows = list.map(l => headers.map(h => {
+        const v = (l[h] ?? '').toString().replace(/"/g, '""');
+        return /[",\n]/.test(v) ? `"${v}"` : v;
+      }).join(','));
+      const csv = headers.join(',') + '\n' + rows.join('\n');
+      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `kumyu-leads-${new Date().toISOString().slice(0,10)}.csv`;
+      document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+      showToast(`Exported ${list.length} lead${list.length>1?'s':''}`);
+    });
+
+    /* =========================================================
+       Admin gate — hash-route + passphrase
+       Default placeholder passphrase: kumyu2025
+       Change ADMIN_PW_HASH below to rotate. (SHA-256 hex)
+       ========================================================= */
+    const ADMIN_PW_HASH = '34c7ceda1e0c1d79bc6d68bcd1550e3cd285360bc8ea5b8bfaccc747cabecacd'; // sha256("kumyu2025")
+    const SESSION_KEY = 'kumyu_admin_session';
+    const FAIL_KEY    = 'kumyu_admin_fails';
+    const COOLDOWN_MS = 60 * 1000;
+    const MAX_FAILS   = 3;
+
+    async function sha256(text) {
+      const buf = new TextEncoder().encode(text);
+      const hash = await crypto.subtle.digest('SHA-256', buf);
+      return Array.from(new Uint8Array(hash)).map(b => b.toString(16).padStart(2,'0')).join('');
+    }
+
+    function isUnlocked() {
+      try { return sessionStorage.getItem(SESSION_KEY) === '1'; } catch (e) { return false; }
+    }
+    function setUnlocked(on) {
+      try {
+        if (on) sessionStorage.setItem(SESSION_KEY, '1');
+        else    sessionStorage.removeItem(SESSION_KEY);
+      } catch (e) {}
+    }
+    function adminLinks() { return $$('[data-admin-link]'); }
+    function setAdminLinksVisible(on) {
+      adminLinks().forEach(a => a.classList.toggle('hidden', !on));
+    }
+
+    function showLock() {
+      const lock = $('#admin-lock'); const panel = $('#admin-panel'); const wrap = $('#admin');
+      if (wrap)  wrap.classList.remove('hidden');
+      if (lock)  lock.classList.remove('hidden');
+      if (panel) panel.classList.add('hidden');
+      setAdminLinksVisible(isUnlocked());
+    }
+    function showPanel() {
+      const lock = $('#admin-lock'); const panel = $('#admin-panel'); const wrap = $('#admin');
+      if (wrap)  wrap.classList.remove('hidden');
+      if (lock)  lock.classList.add('hidden');
+      if (panel) panel.classList.remove('hidden');
+      setAdminLinksVisible(true);
+      renderAdmin();
+    }
+
+    async function tryUnlock(pw) {
+      const until = parseInt(localStorage.getItem(FAIL_KEY) || '0', 10);
+      const now = Date.now();
+      if (until > now) {
+        const secs = Math.ceil((until - now) / 1000);
+        return { ok:false, msg:`Too many attempts. Try again in ${secs}s.` };
+      }
+      const hash = await sha256(pw);
+      if (hash === ADMIN_PW_HASH) {
+        localStorage.removeItem(FAIL_KEY);
+        localStorage.removeItem('kumyu_admin_fails_count');
+        setUnlocked(true);
+        return { ok:true };
+      }
+      let fails = parseInt(localStorage.getItem('kumyu_admin_fails_count') || '0', 10) + 1;
+      localStorage.setItem('kumyu_admin_fails_count', String(fails));
+      if (fails >= MAX_FAILS) {
+        localStorage.setItem(FAIL_KEY, String(now + COOLDOWN_MS));
+        localStorage.removeItem('kumyu_admin_fails_count');
+        return { ok:false, msg:`Too many failed attempts. Locked for 60s.` };
+      }
+      const left = MAX_FAILS - fails;
+      return { ok:false, msg:`Wrong passphrase. ${left} attempt${left===1?'':'s'} left.` };
+    }
+
+    function lockScreen() {
+      setUnlocked(false);
+      showLock();
+      if (location.hash === '#admin') {
+        history.replaceState(null, '', location.pathname + location.search);
+      }
+    }
+
+    const adminLogin = $('#admin-login');
+    const adminPw    = $('#admin-pw');
+    const adminErr   = $('#admin-err');
+    adminLogin?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      adminErr.classList.add('hidden');
+      const r = await tryUnlock(adminPw.value);
+      if (r.ok) {
+        adminPw.value = '';
+        showPanel();
+        showToast('Admin unlocked');
+      } else {
+        adminErr.textContent = r.msg;
+        adminErr.classList.remove('hidden');
+        adminPw.focus();
+      }
+    });
+
+    $('#admin-logout')?.addEventListener('click', () => {
+      lockScreen();
+      showToast('Admin locked');
+    });
+
+    function handleHash() {
+      if (location.hash === '#admin') {
+        if (isUnlocked()) showPanel();
+        else showLock();
+      } else {
+        setAdminLinksVisible(isUnlocked());
+      }
+    }
+    window.addEventListener('hashchange', handleHash);
+
+    document.addEventListener('keydown', (e) => {
+      if ((e.metaKey || e.ctrlKey) && e.shiftKey && e.key.toLowerCase() === 'a') {
+        e.preventDefault();
+        if (isUnlocked()) {
+          location.hash = '#admin';
+          showPanel();
+        } else {
+          location.hash = '#admin';
+          showLock();
+          setTimeout(() => $('#admin-pw')?.focus(), 50);
+        }
+      }
+    });
+
+    handleHash();
+
+    /* =========================================================
+       Footer year
+       ========================================================= */
+    $('#year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
